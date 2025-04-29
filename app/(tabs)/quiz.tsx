@@ -1,7 +1,7 @@
 import { SafeAreaView, ScrollView, View, StyleSheet } from 'react-native';
 import Button from '@/components/Button';
 import ImageViewer from '@/components/ImageViewer';
-import SectionElement from '@/components/SectionElement';
+import QuizElement from '@/components/QuizElement';
 import {useRouter} from 'expo-router';
 
 const PlaceholderImage = require("@/assets/images/background-image.png");
@@ -12,35 +12,30 @@ const sections = [
       title: "Phần 1: Cơ bản về Nến Nhật",
       description: "Giới thiệu cơ bản giúp người học hiểu nền tảng",
       lessons: 5,
-      progress: 100,
     },
     {
       id: "reversals",
       title: "Phần 2: Mô hình Nến Đảo Chiều",
       description: "Xác định thị trường đảo chiều với mô hình nến quan trọng",
       lessons: 4,
-      progress: 75,
     },
     {
       id: "continuation",
       title: "Phần 3: Mô hình Nến Tiếp Diễn",
       description: "Xác định các mô hình cho thị trường tiếp diễn",
       lessons: 6,
-      progress: 33,
     },
     {
       id: "reversalChart",
       title: "Phần 4: Mô hình Biểu Đồ Đảo Chiều",
       description: "Các cấu trúc giá cho tín hiệu thị trường đảo chiều",
       lessons: 5,
-      progress: 0,
     },
     {
       id: "continuationChart",
       title: "Phần 5: Mô hình Biểu Đồ Tiếp Diễn",
       description: "Các cấu trúc giá cho tín hiệu thị trường tiếp diễn",
       lessons: 4,
-      progress: 0,
     },
   ]
 
@@ -49,14 +44,13 @@ export default function Index() {
   return (
       <ScrollView style={styles.container}>
               {sections.map((section) => (
-                  <SectionElement
+                  <QuizElement
                     key={section.id}
                     title={section.title}
                     description={section.description}
-                    progress={section.progress}
                     onPress={() => {
                       console.log(`Navigating to ${section.id}`);
-                      router.push(`/lessons/${section.id}`);
+                      router.push(`/quizzes/${section.id}`);
                     }}
                   />
               ))}
@@ -67,7 +61,6 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: "100%",
     backgroundColor: '#25292e',
   },
   imageContainer: {
