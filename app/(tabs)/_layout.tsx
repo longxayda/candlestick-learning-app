@@ -37,14 +37,14 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-              name="about"
-              options={{
-                title: 'Về chúng tôi',
-                tabBarIcon: ({ color, focused }) => (
-                  <Ionicons name={focused ? 'information-circle' : 'information-circle-outline'} color={color} size={24}/>
-                ),
-              }}
-            />
+          name="about"
+          options={{
+            title: 'Về chúng tôi',
+            tabBarIcon: ({ color, focused }) => (
+              <Ionicons name={focused ? 'information-circle' : 'information-circle-outline'} color={color} size={24}/>
+            ),
+          }}
+        />
       <Tabs.Screen
           name="lessons/[sectionId]/[lessonId]"
           options={{
