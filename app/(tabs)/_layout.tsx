@@ -8,8 +8,9 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: '#ffd33d',
+        headerShown: false,
         headerStyle: {
-          backgroundColor: '#25292e',
+          backgroundColor: '#666',
         },
         headerShadowVisible: false,
         headerTintColor: '#fff',
@@ -69,6 +70,11 @@ export default function TabLayout() {
                 href: null,
               }}/>
 
+       <Tabs.Screen
+            name="welcome"
+            options={{
+              href: null,
+            }}/>
     </Tabs>
   );
 }

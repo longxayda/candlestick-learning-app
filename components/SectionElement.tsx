@@ -30,7 +30,7 @@ export default function SectionElement({ title, description, progress, onPress, 
       >
         <View style={styles.imageContainer}>
           <Image
-            source={image}
+            source={{uri: image}}
             style={styles.image}
             resizeMode="cover"
           />
@@ -65,8 +65,9 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     marginRight: 14,
-    width: 48,
-    height: 48,
+    marginTop: 14,
+    width: 60,
+    height: 60,
     borderRadius: 12,
     overflow: 'hidden',
     backgroundColor: '#f0f0f0',
