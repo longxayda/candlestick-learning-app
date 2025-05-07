@@ -1,11 +1,12 @@
-import { StyleSheet, View, Pressable, Text } from 'react-native';
+import { StyleSheet, View, Pressable, Text, Image } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export default function LessonElement({ title, description, progress, onPress, icon }) {
   return (
     <Pressable style={styles.container} onPress={onPress}>
           <View style={styles.iconContainer}>
-            {icon ?? <FontAwesome name="book" size={20} color="#4F4F4F" />}
+          {console.log("icon:", icon)}
+          <Image source={icon} style={styles.image} />
           </View>
           <View style={styles.textContainer}>
             <Text style={styles.title}>{title}</Text>
@@ -18,20 +19,20 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F9F9F9',
+    backgroundColor: '#fff',
     padding: 12,
     marginVertical: 6,
     marginHorizontal: 16,
-    borderRadius: 10,
+    borderRadius: 16,
     elevation: 2,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
+    shadowColor: '#B5B3C1',
+    shadowOpacity: 0.11,
     shadowRadius: 3,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 0, height: 3 },
   },
   iconContainer: {
     marginRight: 12,
-    backgroundColor: '#E0E0E0',
+    backgroundColor: '#fff',
     padding: 8,
     borderRadius: 8,
   },
@@ -47,6 +48,11 @@ const styles = StyleSheet.create({
   description: {
       fontSize: 14,
       color: '#555',
+  },
+  image: {
+      height: 68,
+      width: 68,
+      backgroundColor: "#fff"
   },
     progress: {
       fontSize: 12,

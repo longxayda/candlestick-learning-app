@@ -1,46 +1,47 @@
-import React from "react";
+import React, {useRef, useEffect} from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Dimensions, Image } from "react-native";
 const { width } = Dimensions.get("window");
+import { useRouter } from 'expo-router';
+import LottieView from 'lottie-react-native';
 
 const categories = [
-  { title: "Social Media Class", courses: 15, color: "#FFE0E0", icon: require("../../assets/images/icon.png") },
-  { title: "3D Illustrations", courses: 10, color: "#E0FFF8", icon: require("../../assets/images/icon.png") },
-  { title: "AE Animation", courses: 25, color: "#D6E8FF", icon: require("../../assets/images/icon.png") },
-  { title: "AI Design Basic", courses: 35, color: "#FFDCDC", icon: require("../../assets/images/icon.png") },
-  { title: "Copywriting", courses: 15, color: "#FFF6D6", icon: require("../../assets/images/icon.png") },
-  { title: "Basic Laravel", courses: 8, color: "#EFEAFF", icon: require("../../assets/images/icon.png") },
+  { id: 'basics', title: "Cơ bản về Nến Nhật", courses: 15, color: "rgba(255, 180, 180, 0.5)", icon: require("../../assets/images/sections/section1.png") },
+  { id: "reversals", title: "Nến Đảo Chiều", courses: 10, color: "rgba(180, 255, 228, 0.5)", icon: require("../../assets/images/sections/section2.png") },
+  { id: "continuation", title: "Nến Tiếp Diễn", courses: 25, color: "rgba(30, 144, 255, 0.5)", icon: require("../../assets/images/sections/section3.png") },
+  { id: "reversalChart", title: "Biểu Đồ Đảo Chiều", courses: 35, color: 'rgba(255, 99, 72, 0.5)', icon: require("../../assets/images/sections/section4.png") },
+  { id: "continuationChart", title: "Biểu Đồ Tiếp Diễn", courses: 15, color: "rgba(255, 238, 180, 0.5)", icon: require("../../assets/images/sections/section5.png") },
 ];
 
 export default function CategoryScreen() {
+
   const renderItem = ({ item }) => (
-    <TouchableOpacity style={[styles.card, { backgroundColor: item.color }]}>
+    <TouchableOpacity onPress={() => router.push(`/lessons/${item.id}`)} style={[styles.card, { backgroundColor: item.color }]}>
       {item.icon && <Image source={item.icon} style={styles.icon} />}
       <Text style={styles.title}>{item.title}</Text>
       <Text style={styles.course}>{item.courses} Course</Text>
     </TouchableOpacity>
   );
-
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.textContainer}>
             <Text style={styles.headerTitle}>Khám phá</Text>
             <Text style={styles.subtitle}>Hãy chọn phần học.</Text>
-          </View>
-        <Image source={require("../../assets/images/react-logo.png")} />
+        </View>
+        <View>
+        <Image style={styles.headerImg} source={require("../../assets/images/sections/trangchu1.png")} />
+        </View>
       </View>
-      <View style={styles.flatlist}>
-          <FlatList
-            data={categories}
-            renderItem={renderItem}
-            keyExtractor={(item, index) => index.toString()}
-            numColumns={2}
-            columnWrapperStyle={{ justifyContent: "space-between", paddingHorizontal: 16 }}
-            contentContainerStyle={{ paddingBottom: 100 }}
-            style={styles.list}
-          />
-      </View>
-
+      <FlatList
+        data={categories}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
+        numColumns={2}
+        columnWrapperStyle={{ justifyContent: "space-between", paddingHorizontal: 16 }}
+        contentContainerStyle={{ paddingBottom: 100 }}
+        style={styles.flatList}
+      />
     </View>
   );
 }
@@ -56,6 +57,15 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
     paddingHorizontal: 20,
   },
+  animationContainer: {
+      flexDirection: 'row',
+      alignItems: 'right',
+      backgroundColor: 'none',
+      alignItems: 'center',
+      justifyContent: 'center',
+
+      flex: 1,
+  },
   backArrow: {
     color: "#fff",
     fontSize: 16,
@@ -70,6 +80,10 @@ const styles = StyleSheet.create({
     color: "#eee",
     fontSize: 14,
     marginTop: 4,
+  },
+  headerImg: {
+    height: 100,
+    aspectRatio: 1,
   },
   tabBar: {
     flexDirection: "row",
@@ -93,12 +107,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#000",
   },
-  flatlist: {
+  flatList: {
       backgroundColor: "#fff",
       borderBottomWidth: 1,
-      borderTopLeftRadius: 30,
-      borderTopRightRadius: 30,
-      borderColor: "#eee"
+      borderTopLeftRadius: 40,
+      borderTopRightRadius: 40,
+      borderColor: "#eee",
+      paddingTop: 16,
   },
   list: {
     marginTop: 10,
@@ -110,11 +125,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   icon: {
-    width: 50,
-    height: 50,
+    width: '100%',
+    height: 100,
     alignSelf: "center",
     marginBottom: 10,
     resizeMode: "contain",
+    borderWidth: 0,
   },
   title: {
     fontSize: 16,

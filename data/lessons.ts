@@ -2,9 +2,11 @@ export const lessons = {
   basics: {
       title: "Phần 1: Cơ bản về Nến Nhật",
       description: "Tìm hiểu những kiến thức nền tảng về mô hình nến Nhật",
+      backgroundImg: require("../assets/images/background/section1.jpg"),
       lessons: {
         intro: {
           title: "Bài 1: Nến Nhật là gì?",
+          uri: require("../assets/images/sections/candlestick.png"),
           content: [
             {
               type: "text",
@@ -32,6 +34,7 @@ export const lessons = {
         },
         colors: {
           title: "Bài 2: Màu sắc và độ dài nến",
+          uri: require("../assets/images/sections/lesson2.png"),
           content: [
             {
               type: "text",
@@ -59,6 +62,7 @@ export const lessons = {
         },
         psychology: {
           title: "Bài 3: Tâm lý thị trường sau mỗi cây nến",
+          uri: require("../assets/images/sections/lesson3.png"),
           content: [
             {
               type: "text",
@@ -81,6 +85,7 @@ export const lessons = {
         },
         "single-vs-patterns": {
           title: "Bài 4: Nến đơn và mô hình nến",
+          uri: require("../assets/images/sections/lesson4.png"),
           content: [
             {
               type: "text",
