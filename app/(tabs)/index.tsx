@@ -1,8 +1,7 @@
-import React, {useRef, useEffect} from "react";
+import React, { useRef, useEffect } from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Dimensions, Image } from "react-native";
 const { width } = Dimensions.get("window");
 import { useRouter } from 'expo-router';
-import LottieView from 'lottie-react-native';
 
 const categories = [
   { id: 'basics', title: "Cơ bản về Nến Nhật", courses: 15, color: "rgba(255, 180, 180, 0.5)", icon: require("../../assets/images/sections/section1.png") },
@@ -25,13 +24,22 @@ export default function CategoryScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.textContainer}>
-            <Text style={styles.headerTitle}>Khám phá</Text>
-            <Text style={styles.subtitle}>Hãy chọn phần học.</Text>
+        <View>
+          <Text style={styles.headerTitle}>Khám phá</Text>
+          <Text style={styles.subtitle}>Hãy chọn đề tài.</Text>
         </View>
         <View>
-        <Image style={styles.headerImg} source={require("../../assets/images/sections/trangchu1.png")} />
+          <Image style={styles.headerImg} source={require("../../assets/images/sections/trangchu1.png")} />
         </View>
+      </View>
+      <View style={styles.tabBar}>
+        <Text>
+          Tất cả
+        </Text>
+        <Text>
+          Yêu thích
+        </Text>
+        <Text>Đề nghị</Text>
       </View>
       <FlatList
         data={categories}
@@ -58,13 +66,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   animationContainer: {
-      flexDirection: 'row',
-      alignItems: 'right',
-      backgroundColor: 'none',
-      alignItems: 'center',
-      justifyContent: 'center',
+    flexDirection: 'row',
+    backgroundColor: 'none',
+    alignItems: 'center',
+    justifyContent: 'center',
 
-      flex: 1,
+    flex: 1,
   },
   backArrow: {
     color: "#fff",
@@ -87,14 +94,13 @@ const styles = StyleSheet.create({
   },
   tabBar: {
     flexDirection: "row",
-    justifyContent: "start",
-    gap: 14,
-    paddingVertical: 16,
-    paddingLeft: 14,
+    justifyContent: "flex-start",
+    gap: 20,
+    paddingVertical: 18,
+    paddingLeft: 16,
     backgroundColor: "#fff",
-    borderBottomWidth: 1,
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
+    borderTopLeftRadius: 35,
+    borderTopRightRadius: 35,
     borderColor: "#eee",
   },
   tab: {
@@ -108,12 +114,8 @@ const styles = StyleSheet.create({
     color: "#000",
   },
   flatList: {
-      backgroundColor: "#fff",
-      borderBottomWidth: 1,
-      borderTopLeftRadius: 40,
-      borderTopRightRadius: 40,
-      borderColor: "#eee",
-      paddingTop: 16,
+    backgroundColor: "#fff",
+    borderBottomWidth: 1,
   },
   list: {
     marginTop: 10,
@@ -123,6 +125,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 16,
     marginBottom: 20,
+    borderWidth: 8,
+    borderColor: "#F8F7FF",
   },
   icon: {
     width: '100%',

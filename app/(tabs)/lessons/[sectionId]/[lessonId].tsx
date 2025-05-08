@@ -17,17 +17,17 @@ export default function LessonDetailScreen() {
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>Không tìm thấy bài học.</Text>
         <Pressable
-             style={{
-              marginTop: 24,
-              backgroundColor: '#25292e',
-              paddingVertical: 12,
-              paddingHorizontal: 20,
-              borderRadius: 8,
-            }}
-             onPress={() => router.push('/')}>
-                <Text style={{ color: '#fff', fontSize: 16, textAlign: 'center' }}>
-                    Trang chủ
-               </Text>
+          style={{
+            marginTop: 24,
+            backgroundColor: '#25292e',
+            paddingVertical: 12,
+            paddingHorizontal: 20,
+            borderRadius: 8,
+          }}
+          onPress={() => router.push('/')}>
+          <Text style={{ color: '#fff', fontSize: 16, textAlign: 'center' }}>
+            Trang chủ
+          </Text>
         </Pressable>
       </View>
     );
@@ -41,13 +41,13 @@ export default function LessonDetailScreen() {
         }}
       />
       {/* Breadcrumb / Back / Home */}
-          <Pressable
-            onPress={() => router.push(`/lessons/${sectionId}`)}
-            style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}
-          >
-            <Ionicons name="arrow-back" size={20} color="#4B5563" />
-            <Text style={{ marginLeft: 6, fontSize: 16, color: '#4B5563' }}>Quay về</Text>
-          </Pressable>
+      <Pressable
+        onPress={() => router.push(`/lessons/${sectionId}`)}
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}
+      >
+        <Ionicons name="arrow-back" size={20} color="#4B5563" />
+        <Text style={{ marginLeft: 6, fontSize: 16, color: '#4B5563' }}>Quay về</Text>
+      </Pressable>
 
       <Text style={{ fontSize: 22, fontWeight: 'bold', marginBottom: 16 }}>
         {lesson.title}
@@ -86,8 +86,9 @@ export default function LessonDetailScreen() {
           {lesson.previousLesson && (
             <Pressable
               onPress={() => {
-                  console.log("Navigate to", lesson.previousLesson)
-                  router.push(`/lessons/${sectionId}/${lesson.previousLesson}`)}}
+                console.log("Navigate to", lesson.previousLesson)
+                router.push(`/lessons/${sectionId}/${lesson.previousLesson}`)
+              }}
               style={{
                 flex: 1,
                 backgroundColor: '#25292e',
@@ -97,7 +98,7 @@ export default function LessonDetailScreen() {
               }}
             >
               <Text style={{ color: '#fff', fontSize: 16, textAlign: 'center' }}>
-                 Trước đó
+                Trước đó
               </Text>
             </Pressable>
           )}
@@ -122,23 +123,23 @@ export default function LessonDetailScreen() {
 
 
       {!lesson.nextLesson && (
-          <Pressable
-                 onPress={() => {
-                     console.log(`Navigating to ${nextSection}`);
-                     router.push(`/lessons/${nextSection}`)
-                 }}
-                 style={{
-                   marginTop: 24,
-                   backgroundColor: '#25292e',
-                   paddingVertical: 12,
-                   paddingHorizontal: 20,
-                   borderRadius: 8,
-                 }}
-               >
-             <Text style={{ color: '#fff', fontSize: 16, textAlign: 'center' }}>
-               Phần tiếp theo
-             </Text>
-          </Pressable>
+        <Pressable
+          onPress={() => {
+            console.log(`Navigating to ${nextSection}`);
+            router.push(`/lessons/${nextSection}`)
+          }}
+          style={{
+            marginTop: 24,
+            backgroundColor: '#25292e',
+            paddingVertical: 12,
+            paddingHorizontal: 20,
+            borderRadius: 8,
+          }}
+        >
+          <Text style={{ color: '#fff', fontSize: 16, textAlign: 'center' }}>
+            Phần tiếp theo
+          </Text>
+        </Pressable>
       )}
     </ScrollView>
   );

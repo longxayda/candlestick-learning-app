@@ -15,7 +15,7 @@ export default function TabLayout() {
         headerShadowVisible: false,
         headerTintColor: '#fff',
         tabBarStyle: {
-        backgroundColor: '#fff',
+          backgroundColor: '#fff',
         },
       }}
     >
@@ -33,48 +33,48 @@ export default function TabLayout() {
         options={{
           title: 'Trắc nghiệm',
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons name={focused ? 'information-circle' : 'information-circle-outline'} color={color} size={24}/>
+            <Ionicons name={focused ? 'information-circle' : 'information-circle-outline'} color={color} size={24} />
           ),
         }}
       />
       <Tabs.Screen
-          name="about"
-          options={{
-            title: 'Về chúng tôi',
-            tabBarIcon: ({ color, focused }) => (
-              <Ionicons name={focused ? 'information-circle' : 'information-circle-outline'} color={color} size={24}/>
-            ),
-          }}
-        />
-      <Tabs.Screen
-          name="lessons/[sectionId]/[lessonId]"
-          options={{
-            href: null,
-          }}
+        name="about"
+        options={{
+          title: 'Về chúng tôi',
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons name={focused ? 'information-circle' : 'information-circle-outline'} color={color} size={24} />
+          ),
+        }}
       />
       <Tabs.Screen
-            name="lessons/[sectionId]/index"
-            options={{
-              href: null,
-            }}
-        />
+        name="lessons/[sectionId]/[lessonId]"
+        options={{
+          href: null,
+        }}
+      />
       <Tabs.Screen
-            name="quizzes/[sectionId]/index"
-            options={{
-              href: null,
-            }}
-        />
+        name="lessons/[sectionId]/index"
+        options={{
+          href: null,
+        }}
+      />
       <Tabs.Screen
-              name="quizzes/[sectionId]/[quizId]"
-              options={{
-                href: null,
-              }}/>
+        name="quizzes/[sectionId]/index"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="quizzes/[sectionId]/[quizId]"
+        options={{
+          href: null,
+        }} />
 
-       <Tabs.Screen
-            name="welcome"
-            options={{
-              href: null,
-            }}/>
+      <Tabs.Screen
+        name="welcome"
+        options={{
+          href: null,
+        }} />
     </Tabs>
   );
 }

@@ -1,0 +1,12 @@
+[
+    {
+        "id": "candlestick-patterns",
+        "title": "Mô hình nến & biểu đồ",
+        "backgroundImg": "assets/images/bg/candlestick.jpg"
+    },
+    {
+        "id": "trading-strategies",
+        "title": "Chiến thuật giao dịch",
+        "backgroundImg": "assets/images/bg/strategy.jpg"
+    }
+]

@@ -1,52 +1,55 @@
 import React from "react";
-import { View, ScrollView, Text, StyleSheet, TouchableOpacity, Dimensions, Image, Pressable } from "react-native";
+import { View, ScrollView, Text, StyleSheet, TouchableOpacity, Dimensions, Image, Pressable, ImageBackground } from "react-native";
 const { width } = Dimensions.get("window");
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { lessons } from '@/data/lessons';
 import LessonElement from '@/components/LessonElement';
-import { ImageBackground } from 'react-native';
 
 export default function CategoryScreen() {
   const { sectionId } = useLocalSearchParams();
   const section = lessons[sectionId];
   const backgroundImg = section?.backgroundImg;
   const lessonList = section?.lessons ?? {};
+  const lessonListLength = Object.keys(lessonList).length;
   const router = useRouter();
   return (
-  <ImageBackground source={backgroundImg} style={styles.background}>
-    <View style={styles.overlay}>
-     <Pressable
-       onPress={() => router.push(`/`)}
-       style={{ flexDirection: 'row', marginTop: 16, alignItems: 'center',
-          marginHorizontal: 16,
-          color: "#fff" }}
-     >
-       <Ionicons name="arrow-back" size={20} color="#fff" />
-       <Text style={{ marginLeft: 6, fontSize: 16, color: '#fff' }}>Quay về</Text>
-      </Pressable>
-      <View style={styles.header}>
-        <View style={styles.textContainer}>
+    <ImageBackground source={backgroundImg} style={styles.background}>
+      <View style={styles.overlay}>
+        <Pressable
+          onPress={() => router.push(`/`)}
+          style={{
+            flexDirection: 'row', marginTop: 16, alignItems: 'center',
+            marginHorizontal: 16,
+          }}
+        >
+          <Ionicons name="arrow-back" size={20} color="#fff" />
+          <Text style={{ marginLeft: 6, fontSize: 16, color: '#fff' }}>Quay về</Text>
+        </Pressable>
+        <View style={styles.header}>
+          <View style={{ flex: 1 }}>
             <Text style={styles.headerTitle}>{section.title}</Text>
             <Text style={styles.subtitle}>{section.description}</Text>
           </View>
-      </View>
-      {/* Danh sach lesson */}
-      <ScrollView style={styles.flatList}>
-        {Object.entries(lessonList).map(([lessonId, lesson]) => (
-          <LessonElement
-                key={lessonId}
-                title={lesson.title}
-                description={lesson.description}
-                icon={lesson.uri}
-                onPress={() => router.push(`/lessons/${sectionId}/${lessonId}`)}
-              >
-            {console.log("DANH SACH", lesson)}
-
-                <Text style={{ fontSize: 16 }}>{lesson.title}</Text>
-          </LessonElement>
-        ))}
-      </ScrollView>
+        </View>
+        <View style={styles.tabBar}>
+          <Text style={styles.tabActive}>{lessonListLength} Bài học</Text>
+          {/* <Text style={styles.subtab}>Yêu thích</Text> */}
+        </View>
+        {/* Danh sach lesson */}
+        <ScrollView style={styles.flatList}>
+          {Object.entries(lessonList).map(([lessonId, lesson]) => (
+            <LessonElement
+              key={lessonId}
+              title={lesson.title}
+              description={lesson.description}
+              icon={lesson.uri}
+              onPress={() => router.push(`/lessons/${sectionId}/${lessonId}`)}
+            >
+              <Text style={{ fontSize: 16 }}>{lesson.title}</Text>
+            </LessonElement>
+          ))}
+        </ScrollView>
       </View>
     </ImageBackground>
   );
@@ -58,7 +61,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-//     backgroundColor: "#6D57FC",
     paddingTop: 60,
     paddingBottom: 30,
     paddingHorizontal: 20,
@@ -79,21 +81,22 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   tabBar: {
-    flexDirection: "row",
-    justifyContent: "start",
+    flexDirection: "column",
+    justifyContent: "flex-start",
     gap: 14,
     paddingVertical: 16,
-    paddingLeft: 14,
+    paddingLeft: 16,
     backgroundColor: "#fff",
-    borderBottomWidth: 1,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    borderColor: "#eee",
   },
   tab: {
     fontSize: 16,
     color: "#aaa",
-
+  },
+  subtab: {
+    fontSize: 14,
+    color: "#aaa",
   },
   tabActive: {
     fontSize: 16,
@@ -101,12 +104,10 @@ const styles = StyleSheet.create({
     color: "#000",
   },
   flatList: {
-      backgroundColor: "#fff",
-      borderBottomWidth: 1,
-      borderTopLeftRadius: 40,
-      borderTopRightRadius: 40,
-      borderColor: "#eee",
-      paddingTop: 16,
+    backgroundColor: "#fff",
+    borderBottomWidth: 1,
+    borderColor: "#eee",
+    paddingTop: 16,
   },
   list: {
     marginTop: 10,
