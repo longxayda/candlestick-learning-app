@@ -248,6 +248,7 @@ export const lessons = {
   continuation: {
     title: "Phần 3: Mô hình Nến Tiếp Diễn",
     description: "Nhận biết các mô hình nến báo hiệu xu hướng hiện tại có khả năng tiếp tục",
+    backgroundImg: require("../assets/images/background/section3.jpg"),
     lessons: {
       "rising-three-methods": {
         title: "Bài 9: Rising Three Methods & Falling Three Methods",
@@ -351,6 +352,7 @@ export const lessons = {
   reversalChart: {
     title: "Phần 4: Mô hình Biểu Đồ Đảo Chiều",
     description: "Nhận biết các mô hình biểu đồ báo hiệu khả năng đảo chiều xu hướng",
+    backgroundImg: require("../assets/images/background/section4.jpg"),
     lessons: {
       doubleTopBottom: {
         title: "Bài 12: Double Top & Double Bottom",
@@ -483,6 +485,7 @@ export const lessons = {
   continuationChart: {
     title: "Phần 5: Mô hình Biểu Đồ Tiếp Diễn",
     description: "Các mô hình giá báo hiệu xu hướng hiện tại sẽ tiếp tục sau giai đoạn tích lũy hoặc điều chỉnh",
+    backgroundImg: require("../assets/images/background/section5.jpg"),
     lessons: {
       flag: {
         title: "Bài 16: Flag & Pennant",

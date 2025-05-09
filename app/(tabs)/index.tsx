@@ -29,7 +29,7 @@ export default function CategoryScreen() {
           <Text style={styles.subtitle}>Hãy chọn đề tài.</Text>
         </View>
         <View>
-          <Image style={styles.headerImg} source={require("../../assets/images/sections/trangchu1.png")} />
+          <Image style={styles.headerImg} source={require("../../assets/images/sections/trangchu6.png")} />
         </View>
       </View>
       <View style={styles.tabBar}>
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   headerImg: {
-    height: 100,
+    height: 150,
     aspectRatio: 1,
   },
   tabBar: {
