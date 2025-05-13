@@ -5,6 +5,7 @@ export const quizzes = {
     lessons: {
       intro: {
         title: "Trắc nghiệm bài 1: Nến Nhật là gì?",
+        uri: require("../assets/images/sections/lesson1.png"),
         content: {
           question: "Nến Nhật biểu diễn điều gì trên biểu đồ?",
           options: [
@@ -20,6 +21,7 @@ export const quizzes = {
       },
       colors: {
         title: "Trắc nghiệm bài 2: Màu sắc và độ dài nến",
+        uri: require("../assets/images/sections/lesson2.png"),
         content: {
           question: "Nến xanh dài thường biểu thị điều gì?",
           options: [
@@ -35,6 +37,7 @@ export const quizzes = {
       },
       psychology: {
         title: "Trắc nghiệm bài 3: Tâm lý thị trường sau mỗi cây nến",
+        uri: require("../assets/images/sections/lesson3.png"),
         content: {
           question: "Bóng nến dài ở phía trên cho thấy điều gì?",
           options: [
@@ -50,6 +53,7 @@ export const quizzes = {
       },
       "single-vs-patterns": {
         title: "Trắc nghiệm bài 4: Nến đơn và mô hình nến",
+        uri: require("../assets/images/sections/lesson4.png"),
         content: {
           question: "Mô hình nến được tạo từ bao nhiêu cây nến?",
           options: [
@@ -72,6 +76,7 @@ export const quizzes = {
     lessons: {
       hammer: {
         title: "Trắc nghiệm bài 5: Hammer & Inverted Hammer",
+        uri: require("../assets/images/sections/lesson5.png"),
         content: {
           "question": "Nến Hammer xuất hiện trong xu hướng nào để có hiệu lực cao nhất?",
           "answer": 2,
@@ -87,6 +92,7 @@ export const quizzes = {
       },
       "shooting-star": {
         title: "Trắc nghiệm bài 6: Shooting Star & Hanging Man",
+        uri: require("../assets/images/sections/lesson6.png"),
         content: {
           "question": "Điểm đặc trưng của nến Shooting Star là gì?",
           "answer": 2,
@@ -102,6 +108,7 @@ export const quizzes = {
       },
       engulfing: {
         title: "Trắc nghiệm bài 7: Bullish & Bearish Engulfing",
+        uri: require("../assets/images/sections/lesson7.png"),
         content: {
           "question": "Trong mô hình Bullish Engulfing, điều gì xảy ra?",
           "answer": 1,
@@ -117,6 +124,7 @@ export const quizzes = {
       },
       "morning-star": {
         title: "Trắc nghiệm bài 8: Morning Star & Evening Star",
+        uri: require("../assets/images/sections/lesson8.png"),
         content: {
           "question": "Mô hình Morning Star báo hiệu gì?",
           "answer": 3,
@@ -139,6 +147,7 @@ export const quizzes = {
     lessons: {
       "rising-three-methods": {
         title: "Trắc nghiệm bài 9: Rising Three Methods & Falling Three Methods",
+        uri: require("../assets/images/sections/lesson9.png"),
         content: {
           "question": "Mô hình Rising Three Methods cho thấy điều gì?",
           "answer": 2,
@@ -154,6 +163,7 @@ export const quizzes = {
       },
       doji: {
         title: "Trắc nghiệm bài 10: Doji và các biến thể",
+        uri: require("../assets/images/sections/lesson10.png"),
         content: {
           "question": "Nến Doji biểu thị điều gì?",
           "answer": 2,
@@ -169,6 +179,7 @@ export const quizzes = {
       },
       "spinning-top": {
         title: "Trắc nghiệm bài 11: Spinning Top & Marubozu",
+        uri: require("../assets/images/sections/lesson11.png"),
         content: {
           "question": "Nến Marubozu thường thể hiện điều gì?",
           "answer": 2,
@@ -191,6 +202,7 @@ export const quizzes = {
     lessons: {
       doubleTopBottom: {
         title: "Trắc nghiệm bài 12: Double Top & Double Bottom",
+        uri: require("../assets/images/sections/lesson12.png"),
         content: {
           "question": "Mô hình Double Top thường báo hiệu gì?",
           "answer": 3,
@@ -206,6 +218,7 @@ export const quizzes = {
       },
       headAndShoulders: {
         title: "Trắc nghiệm bài 13: Head and Shoulders & Inverse Head and Shoulders",
+        uri: require("../assets/images/sections/lesson13.png"),
         content: {
           "question": "Mô hình Inverse Head and Shoulders là tín hiệu gì?",
           "answer": 2,
@@ -221,6 +234,7 @@ export const quizzes = {
       },
       roundingTopBottom: {
         title: "Trắc nghiệm bài 14: Rounding Top & Rounding Bottom",
+        uri: require("../assets/images/sections/lesson14.jpg"),
         content: {
           "question": "Rounding Bottom báo hiệu gì?",
           "answer": 2,
@@ -236,6 +250,7 @@ export const quizzes = {
       },
       bumpAndRun: {
         title: "Trắc nghiệm bài 15: Bump and Run Reversal",
+        uri: require("../assets/images/sections/lesson15.png"),
         content: {
           "question": "Mô hình Bump and Run thường xuất hiện sau giai đoạn nào?",
           "answer": 1,
@@ -258,6 +273,7 @@ export const quizzes = {
     lessons: {
       flag: {
         title: "Trắc nghiệm bài 16: Flag & Pennant",
+        uri: require("../assets/images/sections/lesson16.png"),
         content: {
           "question": "Mô hình Flag là dạng gì?",
           "answer": 2,
@@ -273,6 +289,7 @@ export const quizzes = {
       },
       "ascending-descending-triangle": {
         title: "Trắc nghiệm bài 17: Ascending & Descending Triangle",
+        uri: require("../assets/images/sections/lesson17.png"),
         content: {
           "question": "Ascending Triangle thường phá vỡ theo hướng nào?",
           "answer": 2,
@@ -288,6 +305,7 @@ export const quizzes = {
       },
       "symmetrical-triangle": {
         title: "Trắc nghiệm bài 18: Symmetrical Triangle",
+        uri: require("../assets/images/sections/lesson18.png"),
         content: {
           "question": "Symmetrical Triangle cho tín hiệu gì?",
           "answer": 3,
@@ -303,6 +321,7 @@ export const quizzes = {
       },
       "rectangle-pattern": {
         title: "Trắc nghiệm bài 19: Rectangle Pattern",
+        uri: require("../assets/images/sections/lesson19.png"),
         content: {
           "question": "Rectangle Pattern thể hiện điều gì?",
           "answer": 2,

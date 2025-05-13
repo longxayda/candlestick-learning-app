@@ -1,0 +1,88 @@
+import { View, Text, Image, StyleSheet, Animated, ImageBackground } from 'react-native';
+import React, { useEffect, useRef } from 'react'
+import { useRouter } from 'expo-router';
+import LottieView from 'lottie-react-native';
+import { TouchableWithoutFeedback } from 'react-native';
+
+export default function WelcomeScreen() {
+  const router = useRouter();
+  let runAnimation;
+  const bounceAnim = useRef(new Animated.Value(1)).current;
+
+  // useEffect(() => {
+  //   runAnimation.play();
+  // }, [])
+
+  useEffect(() => {
+    runAnimation?.play();
+
+    // Bắt đầu animation nhún
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(bounceAnim, {
+          toValue: 1.05,
+          duration: 500,
+          useNativeDriver: true,
+        }),
+        Animated.timing(bounceAnim, {
+          toValue: 1,
+          duration: 500,
+          useNativeDriver: true,
+        }),
+      ])
+    ).start();
+  }, []);
+
+  return (
+    <ImageBackground source={require('../assets/images/background/Background.png')} style={styles.container}>
+      <View>
+        <Image style={styles.image} source={require('../assets/images/welcome/2.png')} />
+      </View>
+      <View style={styles.textContainer}>
+        <Text style={styles.title}>Nâng cao kỹ năng giao dịch</Text>
+        <Text style={styles.subtitle}>Ứng dụng học Mô hình Nến – Học nhanh, nhớ lâu!</Text>
+        <TouchableWithoutFeedback
+          style={styles.button}
+          onPress={() => router.replace('/(tabs)/home')} // replace để không quay lại được welcome
+        >
+          <Animated.View style={[styles.button, { transform: [{ scale: bounceAnim }] }]}>
+            <Text style={styles.buttonText}>Bắt đầu nào!</Text>
+          </Animated.View>
+        </TouchableWithoutFeedback>
+      </View>
+    </ImageBackground>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, justifyContent: 'center', alignItems: 'center', height: '100%', width: '100%' },
+  textContainer: {
+    alignItems: 'center',
+    marginHorizontal: 18,
+  },
+  title: {
+    color: "#fff",
+    fontSize: 32,
+    fontWeight: "bold",
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  subtitle: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  image: {
+    width: 300,
+    height: 300,
+  },
+  button: {
+    backgroundColor: '#fff',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+  },
+  buttonText: { color: '#6D57FC', fontSize: 16, fontWeight: 'bold' },
+});

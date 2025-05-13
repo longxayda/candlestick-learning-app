@@ -1,16 +1,17 @@
-import { StyleSheet, View, Pressable, Text } from 'react-native';
+import { StyleSheet, View, Pressable, Text, Image } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
-export default function QuizElement({ title, description, progress, onPress, icon }) {
+export default function QuizElement({ title, description, onPress, icon }) {
+  console.log(icon)
   return (
     <Pressable style={styles.container} onPress={onPress}>
-          <View style={styles.iconContainer}>
-            {icon ?? <FontAwesome name="book" size={20} color="#4F4F4F" />}
-          </View>
-          <View style={styles.textContainer}>
-            <Text style={styles.title}>{title}</Text>
-            <Text>{description}</Text>
-          </View>
+      <View style={styles.iconContainer}>
+        <Image source={icon} style={styles.image} />
+      </View>
+      <View style={styles.textContainer}>
+        <Text style={styles.title}>{title}</Text>
+        <Text>{description}</Text>
+      </View>
     </Pressable>
   );
 }
@@ -32,7 +33,6 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     marginRight: 12,
-    backgroundColor: '#E0E0E0',
     padding: 8,
     borderRadius: 8,
   },
@@ -43,15 +43,20 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   textContainer: {
-      flex: 1,
-    },
-  description: {
-      fontSize: 14,
-      color: '#555',
+    flex: 1,
   },
-    progress: {
-      fontSize: 12,
-      color: '#888',
-      marginTop: 4,
-    },
+  image: {
+    height: 68,
+    width: 68,
+    backgroundColor: "#fff"
+  },
+  description: {
+    fontSize: 14,
+    color: '#555',
+  },
+  progress: {
+    fontSize: 12,
+    color: '#888',
+    marginTop: 4,
+  },
 });

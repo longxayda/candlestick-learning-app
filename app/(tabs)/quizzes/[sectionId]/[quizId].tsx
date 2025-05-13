@@ -19,6 +19,7 @@ export default function QuizDetailScreen() {
     setSelectedOption(null);
     setIsCorrect(null);
   }, [quizId]);
+  console.log(sectionId, quizId)
 
   if (!quiz) {
     return (
@@ -51,7 +52,7 @@ export default function QuizDetailScreen() {
         onPress={() => router.push(`/quizzes/${sectionId}`)}
         style={styles.backButton}
       >
-        <Ionicons name="arrow-back" size={20} color="#4B5563" />
+        <Ionicons name="arrow-back" size={20} color="#111" />
         <Text style={styles.backText}>Quay về</Text>
       </Pressable>
 
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
   backText: {
     marginLeft: 6,
     fontSize: 16,
-    color: '#4B5563',
+    color: '#111',
   },
   title: {
     fontSize: 22,
@@ -157,7 +158,7 @@ const styles = StyleSheet.create({
   },
   navButton: {
     flex: 1,
-    backgroundColor: '#25292e',
+    backgroundColor: '#6D57FC',
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 8,
@@ -169,7 +170,7 @@ const styles = StyleSheet.create({
   },
   nextSectionButton: {
     marginTop: 24,
-    backgroundColor: '#25292e',
+    backgroundColor: '#6D57FC',
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 8,

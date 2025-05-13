@@ -20,7 +20,7 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           title: 'Trang chủ',
           tabBarIcon: ({ color, focused }) => (
@@ -71,10 +71,16 @@ export default function TabLayout() {
         }} />
 
       <Tabs.Screen
-        name="welcome"
+        name="sections/[topicId]/index"
         options={{
           href: null,
         }} />
+
+      {/* <Tabs.Screen
+        name="welcome"
+        options={{
+          href: null,
+        }} /> */}
     </Tabs>
   );
 }

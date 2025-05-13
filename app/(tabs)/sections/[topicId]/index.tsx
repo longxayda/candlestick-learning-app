@@ -36,22 +36,22 @@ const NodeItem = ({ step, index, isLeft }) => {
                     >
                         <Image style={styles.image} source={step.uri} />
                     </TouchableOpacity>
-                    <View style={styles.lineContainer}>
+                    {/* <View style={styles.lineContainer}>
                         {!isLast && <View style={styles.hline} />}
                         {!isLast && <View style={styles.hline} />}
                         {!isLast && <View style={styles.hline} />}
-                    </View>
-                    <View style={{ flex: 1, alignItems: 'center', borderWidth: 2 }}><Text style={styles.nodeTitle}>{index + 1}. {step.title}</Text></View>
+                    </View> */}
+                    <View style={styles.titleNode}><Text style={styles.nodeTitle}>{index + 1}. {step.title}</Text></View>
                 </>
             )}
             {!isLeft && (
                 <>
-                    <View style={{ flex: 1, alignItems: 'center' }}><Text style={styles.nodeTitle}>{step.title}</Text></View>
-                    <View style={styles.lineContainer}>
+                    <View style={styles.titleNode}><Text style={styles.nodeTitle}>{index + 1}. {step.title}</Text></View>
+                    {/* <View style={styles.lineContainer}>
                         {!isLast && <View style={styles.hline} />}
                         {!isLast && <View style={styles.hline} />}
                         {!isLast && <View style={styles.hline} />}
-                    </View>
+                    </View> */}
                     <TouchableOpacity
                         disabled={step.status === 'locked'}
                         style={[
@@ -81,7 +81,7 @@ export default function RoadmapScreen() {
     };
 
     return (
-        <ImageBackground source={require('../../../../assets/images/topics/sections/road.png')} style={styles.container}>
+        <ImageBackground source={require('../../../../assets/images/topics/sections/d.jpg')} style={styles.container}>
             <View style={styles.header}>
                 <View style={styles.headerTitle}>
                     <Pressable
@@ -111,7 +111,7 @@ export default function RoadmapScreen() {
                     <Image source={require('../../../../assets/images/sections/trangchu5.png')} />
                 </View>
             </View>
-            <ScrollView style={{ marginVertical: 20 }}>
+            <ScrollView style={{}}>
                 {sampleTopicData.sections.map((step, index) => (
                     <NodeItem key={step.id} step={step} index={index} isLeft={index % 2 === 0} />
                 ))}
@@ -129,7 +129,10 @@ const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
-        justifyContent: 'space-evenly'
+        justifyContent: 'space-evenly',
+        borderBottomWidth: 1,
+        borderColor: '#fff',
+        paddingBottom: 20
     },
     headerTitle: {
         justifyContent: 'space-evenly',
@@ -140,7 +143,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
     },
     subtitle: {
-        color: "#eee",
+        color: "#fff",
         fontSize: 14,
         marginTop: 4,
     },
@@ -173,7 +176,7 @@ const styles = StyleSheet.create({
     //     marginLeft: '16%',
     // },
     unlocked: {
-        backgroundColor: '#fff',
+        backgroundColor: '#fff2d7',
         boxShadow: '0px 5px #ddd',
         borderLeftWidth: 2,
         borderLeftColor: '#ddd',
@@ -224,8 +227,18 @@ const styles = StyleSheet.create({
         marginVertical: 4,
     },
     nodeTitle: {
-        color: '#fff',
+        color: '#f98866',
+        // color: '#00203fff',
         fontSize: 20,
         fontWeight: "bold",
+    },
+    titleNode: {
+        flex: 1,
+        alignItems: "center",
+        borderRadius: 4,
+        backgroundColor: '#fff2d7',
+        // backgroundColor: '#adefe1ff',
+        marginHorizontal: 14,
+        boxShadow: '0px 5px #ddd',
     }
 });

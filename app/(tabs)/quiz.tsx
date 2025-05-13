@@ -1,9 +1,9 @@
-import { SafeAreaView, ScrollView, View, StyleSheet } from 'react-native';
+import { SafeAreaView, ScrollView, View, StyleSheet, ImageBackground, Text, Image } from 'react-native';
 import Button from '@/components/Button';
 import ImageViewer from '@/components/ImageViewer';
 import QuizElement from '@/components/QuizElement';
 import { useRouter } from 'expo-router';
-
+import { quizzes } from '@/data/quizzes';
 
 const sections = [
   {
@@ -38,35 +38,85 @@ const sections = [
   },
 ]
 
+
+const colors = ["rgba(255, 180, 180, 0.5)", "rgba(180, 255, 228, 0.5)", "rgba(30, 144, 255, 0.5)", 'rgba(255, 99, 72, 0.5)', "rgba(255, 238, 180, 0.5)"]
+const iconsMap = {
+  icon1: require("../../assets/images/sections/section1.png"),
+  icon2: require("../../assets/images/sections/section2.png"),
+  icon3: require("../../assets/images/sections/section3.png"),
+  icon4: require("../../assets/images/sections/section4.png"),
+  icon5: require("../../assets/images/sections/section5.png")
+}
+const res = []
+Object.entries(quizzes).map(([sectionId, section], index) => {
+  const icon = iconsMap[`icon${index + 1}`];
+  const description = section.description;
+  let obj = { id: sectionId, title: section.title, description, icon: icon }
+  res.push(obj)
+})
+
 export default function Index() {
   const router = useRouter();
   return (
-    <ScrollView style={styles.container}>
-      {sections.map((section) => (
-        <QuizElement
-          key={section.id}
-          title={section.title}
-          description={section.description}
-          onPress={() => {
-            console.log(`Navigating to ${section.id}`);
-            router.push(`/quizzes/${section.id}`);
-          }}
-        />
-      ))}
-    </ScrollView>
+    <ImageBackground source={require("../../assets/images/background/Background.png")} style={styles.container}>
+      <View style={styles.header}>
+        <View>
+          <Text style={styles.headerTitle}>Trắc nghiệm</Text>
+          <Text style={styles.subtitle}>Hãy chọn đề tài.</Text>
+        </View>
+        <View>
+          <Image style={styles.headerImg} source={require("../../assets/images/sections/trangchu4.png")} />
+        </View>
+      </View>
+      <ScrollView style={styles.container}>
+        {res.map((section) => (
+          <QuizElement
+            key={section.id}
+            title={section.title}
+            description={section.description}
+            icon={section.icon}
+            onPress={() => {
+              console.log(`Navigating to ${section.id}`);
+              router.push(`/quizzes/${section.id}`);
+            }}
+          />
+        ))}
+      </ScrollView>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#25292e',
+    backgroundColor: '#fff',
+    width: '100%', height: '100%'
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingTop: 60,
+    paddingBottom: 30,
+    paddingHorizontal: 20,
   },
   imageContainer: {
     flex: 1,
     paddingTop: 28,
     justifyContent: 'center',
   },
-  footerContainer: {
+  headerTitle: {
+    color: "#fff",
+    fontSize: 32,
+    fontWeight: "bold",
+  },
+  subtitle: {
+    color: "#eee",
+    fontSize: 14,
+    marginTop: 4,
+  },
+  headerImg: {
+    height: 150,
+    aspectRatio: 1,
   },
 });

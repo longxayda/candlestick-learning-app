@@ -6,7 +6,7 @@ export const lessons = {
     lessons: {
       intro: {
         title: "Bài 1: Nến Nhật là gì?",
-        uri: require("../assets/images/sections/candlestick.png"),
+        uri: require("../assets/images/sections/lesson1.png"),
         content: [
           {
             type: "text",
@@ -118,6 +118,7 @@ export const lessons = {
       },
     },
     nextSection: "reversals",
+    previousSection: null,
   },
   reversals: {
     title: "Phần 2: Mô hình nến đảo chiều",
@@ -126,6 +127,7 @@ export const lessons = {
     lessons: {
       hammer: {
         title: "Bài 5: Hammer & Inverted Hammer",
+        uri: require("../assets/images/sections/lesson5.png"),
         content: [
           {
             type: "text",
@@ -153,6 +155,7 @@ export const lessons = {
       },
       "shooting-star": {
         title: "Bài 6: Shooting Star & Hanging Man",
+        uri: require("../assets/images/sections/lesson6.png"),
         content: [
           {
             type: "text",
@@ -185,6 +188,7 @@ export const lessons = {
       },
       engulfing: {
         title: "Bài 7: Bullish & Bearish Engulfing",
+        uri: require("../assets/images/sections/lesson7.png"),
         content: [
           {
             type: "text",
@@ -212,6 +216,7 @@ export const lessons = {
       },
       "morning-star": {
         title: "Bài 8: Morning Star & Evening Star",
+        uri: require("../assets/images/sections/lesson8.png"),
         content: [
           {
             type: "text",
@@ -244,6 +249,7 @@ export const lessons = {
       },
     },
     nextSection: "continuation",
+    previousSection: "basics",
   },
   continuation: {
     title: "Phần 3: Mô hình Nến Tiếp Diễn",
@@ -252,6 +258,7 @@ export const lessons = {
     lessons: {
       "rising-three-methods": {
         title: "Bài 9: Rising Three Methods & Falling Three Methods",
+        uri: require("../assets/images/sections/lesson9.png"),
         content: [
           {
             type: "text",
@@ -284,6 +291,7 @@ export const lessons = {
       },
       doji: {
         title: "Bài 10: Doji và các biến thể",
+        uri: require("../assets/images/sections/lesson10.png"),
         content: [
           {
             type: "text",
@@ -321,6 +329,7 @@ export const lessons = {
       },
       "spinning-top": {
         title: "Bài 11: Spinning Top & Marubozu",
+        uri: require("../assets/images/sections/lesson11.png"),
         content: [
           {
             type: "text",
@@ -348,6 +357,7 @@ export const lessons = {
       },
     },
     nextSection: "reversalChart",
+    previousSection: "reversals",
   },
   reversalChart: {
     title: "Phần 4: Mô hình Biểu Đồ Đảo Chiều",
@@ -356,6 +366,7 @@ export const lessons = {
     lessons: {
       doubleTopBottom: {
         title: "Bài 12: Double Top & Double Bottom",
+        uri: require("../assets/images/sections/lesson12.png"),
         content: [
           {
             type: "text",
@@ -389,6 +400,7 @@ export const lessons = {
       },
       headAndShoulders: {
         title: "Bài 13: Head and Shoulders & Inverse Head and Shoulders",
+        uri: require("../assets/images/sections/lesson13.png"),
         content: [
           {
             type: "text",
@@ -422,6 +434,7 @@ export const lessons = {
       },
       roundingTopBottom: {
         title: "Bài 14: Rounding Top & Rounding Bottom",
+        uri: require("../assets/images/sections/lesson14.jpg"),
         content: [
           {
             type: "text",
@@ -454,6 +467,7 @@ export const lessons = {
       },
       bumpAndRun: {
         title: "Bài 15: Bump and Run Reversal",
+        uri: require("../assets/images/sections/lesson15.png"),
         content: [
           {
             type: "text",
@@ -481,6 +495,7 @@ export const lessons = {
       },
     },
     nextSection: "continuationChart",
+    previousSection: "continuation",
   },
   continuationChart: {
     title: "Phần 5: Mô hình Biểu Đồ Tiếp Diễn",
@@ -489,6 +504,7 @@ export const lessons = {
     lessons: {
       flag: {
         title: "Bài 16: Flag & Pennant",
+        uri: require("../assets/images/sections/lesson16.png"),
         content: [
           {
             type: "text",
@@ -521,6 +537,7 @@ export const lessons = {
       },
       "ascending-descending-triangle": {
         title: "Bài 17: Ascending & Descending Triangle",
+        uri: require("../assets/images/sections/lesson17.png"),
         content: [
           {
             type: "text",
@@ -548,6 +565,7 @@ export const lessons = {
       },
       "symmetrical-triangle": {
         title: "Bài 18: Symmetrical Triangle",
+        uri: require("../assets/images/sections/lesson18.png"),
         content: [
           {
             type: "text",
@@ -575,6 +593,7 @@ export const lessons = {
       },
       "rectangle-pattern": {
         title: "Bài 19: Rectangle Pattern",
+        uri: require("../assets/images/sections/lesson19.png"),
         content: [
           {
             type: "text",
@@ -602,5 +621,6 @@ export const lessons = {
       },
     },
     nextSection: null,
+    previousSection: "reversalChart",
   },
 };

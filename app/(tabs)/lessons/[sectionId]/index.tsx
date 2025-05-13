@@ -12,12 +12,14 @@ export default function CategoryScreen() {
   const backgroundImg = section?.backgroundImg;
   const lessonList = section?.lessons ?? {};
   const lessonListLength = Object.keys(lessonList).length;
+  const nextSection = section?.nextSection;
+  const previousSection = section?.previousSection;
   const router = useRouter();
   return (
     <ImageBackground source={backgroundImg} style={styles.background}>
       <View style={styles.overlay}>
         <Pressable
-          onPress={() => router.push(`/`)}
+          onPress={() => router.push(`/home`)}
           style={{
             flexDirection: 'row', marginTop: 16, alignItems: 'center',
             marginHorizontal: 16,
@@ -32,14 +34,31 @@ export default function CategoryScreen() {
             <Text style={styles.subtitle}>{section.description}</Text>
           </View>
         </View>
+
         <View style={styles.tabBar}>
+          {previousSection ? (
+            <TouchableOpacity onPress={() => router.push(`/lessons/${previousSection}`)}>
+              <Text style={styles.tabActive}><Ionicons name="arrow-back" size={20} /></Text>
+            </TouchableOpacity>
+          ) : <TouchableOpacity disabled style={{opacity: 0.3}}>
+              <Text style={styles.tabActive}><Ionicons name="arrow-back" size={20} /></Text>
+            </TouchableOpacity> }
           <Text style={styles.tabActive}>{lessonListLength} Bài học</Text>
-          {/* <Text style={styles.subtab}>Yêu thích</Text> */}
+          {nextSection ? (
+            <TouchableOpacity onPress={() => router.push(`/lessons/${nextSection}`)}>
+              <Text style={styles.tabActive}><Ionicons name="arrow-forward" size={20} /></Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity disabled style={{opacity: 0.3}}>
+              <Text style={styles.tabActive}><Ionicons name="arrow-forward" size={20} /></Text>
+            </TouchableOpacity>
+          )}
         </View>
         {/* Danh sach lesson */}
         <ScrollView style={styles.flatList}>
-          {Object.entries(lessonList).map(([lessonId, lesson]) => (
+          {Object.entries(lessonList).map(([lessonId, lesson], index) => (
             <LessonElement
+              index={index}
               key={lessonId}
               title={lesson.title}
               description={lesson.description}
@@ -81,11 +100,10 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   tabBar: {
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    gap: 14,
+    flexDirection: "row",
+    justifyContent: "space-between",
     paddingVertical: 16,
-    paddingLeft: 16,
+    paddingHorizontal: 16,
     backgroundColor: "#fff",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
@@ -99,8 +117,7 @@ const styles = StyleSheet.create({
     color: "#aaa",
   },
   tabActive: {
-    fontSize: 16,
-    fontWeight: "bold",
+    fontSize: 14,
     color: "#000",
   },
   flatList: {
@@ -139,7 +156,7 @@ const styles = StyleSheet.create({
   },
   overlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.4)', // làm tối overlay để chữ trắng dễ đọc
+    backgroundColor: 'rgba(0,0,0,0.4)',
   },
   background: {
     flex: 1,
