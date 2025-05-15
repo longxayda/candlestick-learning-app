@@ -75,14 +75,14 @@ export const quizzes = {
     description: "Nhận biết các mô hình nến báo hiệu khả năng đảo chiều xu hướng",
     lessons: {
       hammer: {
-        title: "Trắc nghiệm bài 5: Hammer & Inverted Hammer",
+        title: "Trắc nghiệm bài 5: Nến Búa & Búa ngược",
         uri: require("../assets/images/sections/lesson5.png"),
         content: {
-          "question": "Nến Hammer xuất hiện trong xu hướng nào để có hiệu lực cao nhất?",
-          "answer": 2,
-          "options": [
+          question: "Nến Búa (Hammer) xuất hiện trong xu hướng nào để có hiệu lực cao nhất?",
+          answer: 2,
+          options: [
             "Xu hướng tăng",
-            "Thị trường sideway",
+            "Thị trường đi ngang",
             "Xu hướng giảm",
             "Không phụ thuộc xu hướng"
           ]
@@ -91,44 +91,44 @@ export const quizzes = {
         previousQuiz: null,
       },
       "shooting-star": {
-        title: "Trắc nghiệm bài 6: Shooting Star & Hanging Man",
+        title: "Trắc nghiệm bài 6: Sao băng & Người treo cổ",
         uri: require("../assets/images/sections/lesson6.png"),
         content: {
-          "question": "Điểm đặc trưng của nến Shooting Star là gì?",
-          "answer": 2,
-          "options": [
+          question: "Điểm đặc trưng của nến Sao băng (Shooting Star) là gì?",
+          answer: 2,
+          options: [
             "Bóng dưới dài",
             "Thân nến dài",
-            "Bóng trên dài, thân nhỏ, gần đáy nến",
-            "Thân to và không có bóng"
+            "Bóng trên dài, thân nhỏ, nằm gần đáy nến",
+            "Thân lớn và không có bóng"
           ]
         },
         nextQuiz: "engulfing",
         previousQuiz: "hammer",
       },
       engulfing: {
-        title: "Trắc nghiệm bài 7: Bullish & Bearish Engulfing",
+        title: "Trắc nghiệm bài 7: Nhấn chìm tăng & Nhấn chìm giảm",
         uri: require("../assets/images/sections/lesson7.png"),
         content: {
-          "question": "Trong mô hình Bullish Engulfing, điều gì xảy ra?",
-          "answer": 1,
-          "options": [
+          question: "Trong mô hình Nhấn chìm tăng (Bullish Engulfing), điều gì xảy ra?",
+          answer: 1,
+          options: [
             "Nến giảm dài hơn",
             "Nến tăng bao phủ hoàn toàn nến giảm trước đó",
             "Nến nhỏ hơn nến trước",
-            "Không có bao phủ"
+            "Không có sự bao phủ"
           ]
         },
         nextQuiz: "morning-star",
         previousQuiz: "shooting-star",
       },
       "morning-star": {
-        title: "Trắc nghiệm bài 8: Morning Star & Evening Star",
+        title: "Trắc nghiệm bài 8: Sao Mai & Sao Hôm",
         uri: require("../assets/images/sections/lesson8.png"),
         content: {
-          "question": "Mô hình Morning Star báo hiệu gì?",
-          "answer": 3,
-          "options": [
+          question: "Mô hình Sao Mai (Morning Star) báo hiệu điều gì?",
+          answer: 3,
+          options: [
             "Tiếp diễn xu hướng giảm",
             "Đảo chiều từ tăng sang giảm",
             "Thị trường đi ngang",
@@ -146,16 +146,16 @@ export const quizzes = {
     description: "Nhận biết các mô hình nến báo hiệu xu hướng hiện tại có khả năng tiếp tục",
     lessons: {
       "rising-three-methods": {
-        title: "Trắc nghiệm bài 9: Rising Three Methods & Falling Three Methods",
+        title: "Trắc nghiệm bài 9: Ba Nến Tăng & Ba Nến Giảm",
         uri: require("../assets/images/sections/lesson9.png"),
         content: {
-          "question": "Mô hình Rising Three Methods cho thấy điều gì?",
-          "answer": 2,
-          "options": [
-            "Đảo chiều tăng thành giảm",
+          question: "Mô hình Ba Nến Tăng (Rising Three Methods) cho thấy điều gì?",
+          answer: 2,
+          options: [
+            "Đảo chiều từ tăng sang giảm",
             "Tạm nghỉ rồi tiếp tục giảm",
             "Tạm nghỉ trong xu hướng tăng, rồi tiếp tục tăng",
-            "Thị trường không rõ ràng"
+            "Thị trường không rõ xu hướng"
           ]
         },
         nextQuiz: "doji",
@@ -165,29 +165,29 @@ export const quizzes = {
         title: "Trắc nghiệm bài 10: Doji và các biến thể",
         uri: require("../assets/images/sections/lesson10.png"),
         content: {
-          "question": "Nến Doji biểu thị điều gì?",
-          "answer": 2,
-          "options": [
-            "Mua chiếm ưu thế",
-            "Bán chiếm ưu thế",
+          question: "Nến Doji thường biểu thị điều gì?",
+          answer: 2,
+          options: [
+            "Bên mua chiếm ưu thế",
+            "Bên bán chiếm ưu thế",
             "Sự lưỡng lự giữa bên mua và bên bán",
-            "Không có ý nghĩa"
+            "Không có ý nghĩa thị trường"
           ]
         },
         nextQuiz: "spinning-top",
         previousQuiz: "rising-three-methods",
       },
       "spinning-top": {
-        title: "Trắc nghiệm bài 11: Spinning Top & Marubozu",
+        title: "Trắc nghiệm bài 11: Con Xoay & Marubozu",
         uri: require("../assets/images/sections/lesson11.png"),
         content: {
-          "question": "Nến Marubozu thường thể hiện điều gì?",
-          "answer": 2,
-          "options": [
-            "Không có lực rõ ràng",
-            "Thị trường đi ngang",
-            "Động lượng mạnh theo hướng đóng",
-            "Sự đảo chiều nhẹ"
+          question: "Nến Marubozu thường thể hiện điều gì?",
+          answer: 2,
+          options: [
+            "Không có lực thị trường rõ ràng",
+            "Thị trường đang đi ngang",
+            "Động lượng mạnh theo hướng đóng cửa",
+            "Dấu hiệu đảo chiều nhẹ"
           ]
         },
         nextQuiz: null,
@@ -201,14 +201,14 @@ export const quizzes = {
     description: "Nhận biết các mô hình biểu đồ báo hiệu khả năng đảo chiều xu hướng",
     lessons: {
       doubleTopBottom: {
-        title: "Trắc nghiệm bài 12: Double Top & Double Bottom",
+        title: "Trắc nghiệm bài 12: Đỉnh Kép & Đáy Kép",
         uri: require("../assets/images/sections/lesson12.png"),
         content: {
-          "question": "Mô hình Double Top thường báo hiệu gì?",
-          "answer": 3,
-          "options": [
-            "Tiếp diễn tăng",
-            "Đi ngang",
+          question: "Mô hình Đỉnh Kép (Double Top) thường báo hiệu gì?",
+          answer: 3,
+          options: [
+            "Tiếp diễn xu hướng tăng",
+            "Thị trường đi ngang",
             "Đảo chiều từ giảm sang tăng",
             "Đảo chiều từ tăng sang giảm"
           ]
@@ -217,14 +217,14 @@ export const quizzes = {
         previousQuiz: null,
       },
       headAndShoulders: {
-        title: "Trắc nghiệm bài 13: Head and Shoulders & Inverse Head and Shoulders",
+        title: "Trắc nghiệm bài 13: Vai - Đầu - Vai & Vai - Đầu - Vai Ngược",
         uri: require("../assets/images/sections/lesson13.png"),
         content: {
-          "question": "Mô hình Inverse Head and Shoulders là tín hiệu gì?",
-          "answer": 2,
-          "options": [
+          question: "Mô hình Vai - Đầu - Vai Ngược (Inverse Head and Shoulders) là tín hiệu gì?",
+          answer: 2,
+          options: [
             "Tiếp diễn xu hướng giảm",
-            "Đi ngang",
+            "Thị trường đi ngang",
             "Đảo chiều từ giảm sang tăng",
             "Tăng rồi giảm"
           ]
@@ -233,30 +233,30 @@ export const quizzes = {
         previousQuiz: "doubleTopBottom",
       },
       roundingTopBottom: {
-        title: "Trắc nghiệm bài 14: Rounding Top & Rounding Bottom",
+        title: "Trắc nghiệm bài 14: Đỉnh Tròn & Đáy Tròn",
         uri: require("../assets/images/sections/lesson14.jpg"),
         content: {
-          "question": "Rounding Bottom báo hiệu gì?",
-          "answer": 2,
-          "options": [
-            "Tăng sang giảm",
-            "Tiếp diễn giảm",
+          question: "Mô hình Đáy Tròn (Rounding Bottom) báo hiệu gì?",
+          answer: 2,
+          options: [
+            "Đảo chiều từ tăng sang giảm",
+            "Tiếp diễn xu hướng giảm",
             "Đảo chiều từ giảm sang tăng",
-            "Không có tín hiệu"
+            "Không có tín hiệu rõ ràng"
           ]
         },
         nextQuiz: "bumpAndRun",
         previousQuiz: "headAndShoulders",
       },
       bumpAndRun: {
-        title: "Trắc nghiệm bài 15: Bump and Run Reversal",
+        title: "Trắc nghiệm bài 15: Mô hình Bump and Run Reversal",
         uri: require("../assets/images/sections/lesson15.png"),
         content: {
-          "question": "Mô hình Bump and Run thường xuất hiện sau giai đoạn nào?",
-          "answer": 1,
-          "options": [
+          question: "Mô hình Bump and Run thường xuất hiện sau giai đoạn nào?",
+          answer: 1,
+          options: [
             "Biến động nhẹ",
-            "Tăng/giảm nhanh và dốc",
+            "Tăng hoặc giảm mạnh và dốc",
             "Thị trường đi ngang",
             "Giai đoạn tích lũy"
           ]
@@ -272,12 +272,12 @@ export const quizzes = {
     description: "Các mô hình giá báo hiệu xu hướng hiện tại sẽ tiếp tục sau giai đoạn tích lũy hoặc điều chỉnh",
     lessons: {
       flag: {
-        title: "Trắc nghiệm bài 16: Flag & Pennant",
+        title: "Trắc nghiệm bài 16: Cờ và Cờ đuôi nheo",
         uri: require("../assets/images/sections/lesson16.png"),
         content: {
-          "question": "Mô hình Flag là dạng gì?",
-          "answer": 2,
-          "options": [
+          question: "Mô hình Cờ (Flag) là dạng gì?",
+          answer: 2,
+          options: [
             "Đảo chiều",
             "Không có tín hiệu",
             "Tiếp diễn sau một xu hướng mạnh",
@@ -288,12 +288,12 @@ export const quizzes = {
         previousQuiz: null,
       },
       "ascending-descending-triangle": {
-        title: "Trắc nghiệm bài 17: Ascending & Descending Triangle",
+        title: "Trắc nghiệm bài 17: Tam giác tăng và Tam giác giảm",
         uri: require("../assets/images/sections/lesson17.png"),
         content: {
-          "question": "Ascending Triangle thường phá vỡ theo hướng nào?",
-          "answer": 2,
-          "options": [
+          question: "Tam giác tăng (Ascending Triangle) thường phá vỡ theo hướng nào?",
+          answer: 2,
+          options: [
             "Hướng xuống",
             "Không rõ",
             "Hướng lên (tăng giá)",
@@ -304,12 +304,12 @@ export const quizzes = {
         previousQuiz: "flag",
       },
       "symmetrical-triangle": {
-        title: "Trắc nghiệm bài 18: Symmetrical Triangle",
+        title: "Trắc nghiệm bài 18: Tam giác cân",
         uri: require("../assets/images/sections/lesson18.png"),
         content: {
-          "question": "Symmetrical Triangle cho tín hiệu gì?",
-          "answer": 3,
-          "options": [
+          question: "Tam giác cân (Symmetrical Triangle) cho tín hiệu gì?",
+          answer: 3,
+          options: [
             "Luôn đảo chiều",
             "Luôn tiếp diễn",
             "Không có tín hiệu",
@@ -320,12 +320,12 @@ export const quizzes = {
         previousQuiz: "ascending-descending-triangle",
       },
       "rectangle-pattern": {
-        title: "Trắc nghiệm bài 19: Rectangle Pattern",
+        title: "Trắc nghiệm bài 19: Mô hình Hình chữ nhật",
         uri: require("../assets/images/sections/lesson19.png"),
         content: {
-          "question": "Rectangle Pattern thể hiện điều gì?",
-          "answer": 2,
-          "options": [
+          question: "Mô hình Hình chữ nhật (Rectangle Pattern) thể hiện điều gì?",
+          answer: 2,
+          options: [
             "Thị trường mạnh",
             "Biến động lớn",
             "Giai đoạn tích lũy/giằng co giá",

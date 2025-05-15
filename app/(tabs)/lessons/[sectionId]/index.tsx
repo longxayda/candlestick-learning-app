@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { lessons } from '@/data/lessons';
 import LessonElement from '@/components/LessonElement';
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function CategoryScreen() {
   const { sectionId } = useLocalSearchParams();
@@ -15,74 +16,76 @@ export default function CategoryScreen() {
   const nextSection = section?.nextSection;
   const previousSection = section?.previousSection;
   const router = useRouter();
-  return (
-    <ImageBackground source={backgroundImg} style={styles.background}>
-      <View style={styles.overlay}>
-        <Pressable
-          onPress={() => router.push(`/home`)}
-          style={{
-            flexDirection: 'row', marginTop: 16, alignItems: 'center',
-            marginHorizontal: 16,
-          }}
-        >
-          <Ionicons name="arrow-back" size={20} color="#fff" />
-          <Text style={{ marginLeft: 6, fontSize: 16, color: '#fff' }}>Quay về</Text>
-        </Pressable>
-        <View style={styles.header}>
-          <View style={{ flex: 1 }}>
-            <Text style={styles.headerTitle}>{section.title}</Text>
-            <Text style={styles.subtitle}>{section.description}</Text>
-          </View>
-        </View>
 
-        <View style={styles.tabBar}>
-          {previousSection ? (
-            <TouchableOpacity onPress={() => router.push(`/lessons/${previousSection}`)}>
-              <Text style={styles.tabActive}><Ionicons name="arrow-back" size={20} /></Text>
-            </TouchableOpacity>
-          ) : <TouchableOpacity disabled style={{opacity: 0.3}}>
-              <Text style={styles.tabActive}><Ionicons name="arrow-back" size={20} /></Text>
-            </TouchableOpacity> }
-          <Text style={styles.tabActive}>{lessonListLength} Bài học</Text>
-          {nextSection ? (
-            <TouchableOpacity onPress={() => router.push(`/lessons/${nextSection}`)}>
-              <Text style={styles.tabActive}><Ionicons name="arrow-forward" size={20} /></Text>
-            </TouchableOpacity>
-          ) : (
-            <TouchableOpacity disabled style={{opacity: 0.3}}>
-              <Text style={styles.tabActive}><Ionicons name="arrow-forward" size={20} /></Text>
-            </TouchableOpacity>
-          )}
+  const colors = ["rgba(255, 180, 180, 0.5)", "rgba(180, 255, 228, 0.5)", "rgba(30, 144, 255, 0.5)", 'rgba(255, 99, 72, 0.5)', "rgba(255, 238, 180, 0.5)"]
+  return (
+    <SafeAreaView style={styles.background}>
+      <View style={styles.header}>
+        <View style={styles.buttonContainer}>
+          <Pressable
+            onPress={() => router.push(`/home`)}
+            style={{
+              flexDirection: 'row',
+            }}
+          >
+            <Ionicons name="arrow-back" size={20} color="#fff" />
+            <Text style={{ marginLeft: 6, fontSize: 16, color: '#fff' }}>Quay về</Text>
+          </Pressable>
         </View>
-        {/* Danh sach lesson */}
-        <ScrollView style={styles.flatList}>
-          {Object.entries(lessonList).map(([lessonId, lesson], index) => (
-            <LessonElement
-              index={index}
-              key={lessonId}
-              title={lesson.title}
-              description={lesson.description}
-              icon={lesson.uri}
-              onPress={() => router.push(`/lessons/${sectionId}/${lessonId}`)}
-            >
-              <Text style={{ fontSize: 16 }}>{lesson.title}</Text>
-            </LessonElement>
-          ))}
-        </ScrollView>
+        <View style={styles.textContainer}>
+          <Text style={styles.headerTitle}>{section.title}</Text>
+          <Text style={styles.subtitle}>{section.description}</Text>
+        </View>
       </View>
-    </ImageBackground>
+      <ScrollView style={styles.backgroundContainer}>
+        <ImageBackground source={backgroundImg}>
+          <View style={styles.overlay}>
+            <View style={styles.tabBar}>
+              {previousSection ? (
+                <TouchableOpacity onPress={() => router.push(`/lessons/${previousSection}`)}>
+                  <Text style={styles.tabActive}><Ionicons name="arrow-back" size={20} /></Text>
+                </TouchableOpacity>
+              ) : <TouchableOpacity disabled style={{ opacity: 0.3 }}>
+                <Text style={styles.tabActive}><Ionicons name="arrow-back" size={20} /></Text>
+              </TouchableOpacity>}
+              <Text style={styles.tabActive}>{lessonListLength} Bài học</Text>
+              {nextSection ? (
+                <TouchableOpacity onPress={() => router.push(`/lessons/${nextSection}`)}>
+                  <Text style={styles.tabActive}><Ionicons name="arrow-forward" size={20} /></Text>
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity disabled style={{ opacity: 0.3 }}>
+                  <Text style={styles.tabActive}><Ionicons name="arrow-forward" size={20} /></Text>
+                </TouchableOpacity>
+              )}
+            </View>
+            {Object.entries(lessonList).map(([lessonId, lesson], index) => (
+              <LessonElement
+                index={index}
+                key={lessonId}
+                title={lesson.title}
+                description={lesson.description}
+                icon={lesson.uri}
+                color={colors[index]}
+                onPress={() => router.push(`/lessons/${sectionId}/${lessonId}`)}
+              >
+                <Text style={{ fontSize: 16 }}>{lesson.title}</Text>
+              </LessonElement>
+            ))}
+          </View>
+        </ImageBackground>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#6D57FC" },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-between',
-    paddingTop: 60,
     paddingBottom: 30,
     paddingHorizontal: 20,
+    marginVertical: 16,
   },
   backArrow: {
     color: "#fff",
@@ -99,14 +102,20 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 4,
   },
+  buttonContainer: {
+  },
+  textContainer: {
+  },
+  backgroundContainer: {
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+  },
   tabBar: {
-    flexDirection: "row",
+    flexDirection: 'row',
     justifyContent: "space-between",
     paddingVertical: 16,
     paddingHorizontal: 16,
-    backgroundColor: "#fff",
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
+
   },
   tab: {
     fontSize: 16,
@@ -118,13 +127,14 @@ const styles = StyleSheet.create({
   },
   tabActive: {
     fontSize: 14,
-    color: "#000",
+    color: "#fff",
   },
   flatList: {
-    backgroundColor: "#fff",
+    // backgroundColor: "#6D57FC",
     borderBottomWidth: 1,
     borderColor: "#eee",
     paddingTop: 16,
+    borderWidth: 1,
   },
   list: {
     marginTop: 10,
@@ -162,5 +172,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
+    backgroundColor: "#6D57FC"
   },
 });

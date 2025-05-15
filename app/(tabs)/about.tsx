@@ -5,7 +5,7 @@ export default function Index() {
     <SafeAreaView style={styles.safeContainer}>
       <ScrollView contentContainerStyle={styles.container}>
         <Image
-          // source={require('@/assets/justiva-logo.png')} 
+          source={require('../../assets/images/about/jlf.png')} 
           style={styles.logo}
           resizeMode="contain"
         />
@@ -23,8 +23,8 @@ export default function Index() {
         </Text>
 
         <Text style={styles.paragraph}>
-          🌐 <Text style={styles.bold}>Website:</Text> www.justivalaw.com{'\n'}
-          📧 <Text style={styles.bold}>Email:</Text> contact@justivalaw.vn
+          🌐 <Text style={styles.bold}>Website:</Text> justivalaw.com{'\n'}
+          📧 <Text style={styles.bold}>Email:</Text> justivalaw@gmail.com
         </Text>
       </ScrollView>
     </SafeAreaView>
@@ -34,7 +34,7 @@ export default function Index() {
 const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,
-    backgroundColor: '#25292e',
+    backgroundColor: '#6D57FC',
   },
   container: {
     padding: 20,
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   highlight: {
-    color: '#4fc3f7',
+    color: 'gold',
     fontWeight: '600',
   },
   bold: {

@@ -35,9 +35,9 @@ export default function WelcomeScreen() {
 
   return (
     <ImageBackground source={require('../assets/images/background/Background.png')} style={styles.container}>
-      <View>
+      <Animated.View style={[{ transform: [{ scale: bounceAnim }] }]}>
         <Image style={styles.image} source={require('../assets/images/welcome/2.png')} />
-      </View>
+      </Animated.View>
       <View style={styles.textContainer}>
         <Text style={styles.title}>Nâng cao kỹ năng giao dịch</Text>
         <Text style={styles.subtitle}>Ứng dụng học Mô hình Nến – Học nhanh, nhớ lâu!</Text>

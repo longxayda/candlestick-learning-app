@@ -1,10 +1,12 @@
 import { StyleSheet, View, Pressable, Text, Image } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import LinearGradient from 'react-native-linear-gradient';
 
-export default function QuizElement({ title, description, onPress, icon }) {
+
+export default function QuizElement({ title, description, onPress, icon, color }) {
   console.log(icon)
   return (
-    <Pressable style={styles.container} onPress={onPress}>
+    <Pressable style={[styles.container, { backgroundColor: color }]} onPress={onPress}>
       <View style={styles.iconContainer}>
         <Image source={icon} style={styles.image} />
       </View>
@@ -20,16 +22,14 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F9F9F9',
     padding: 12,
     marginVertical: 6,
     marginHorizontal: 16,
     borderRadius: 10,
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    shadowOffset: { width: 0, height: 2 },
+    backgroundColor: '#fff', // đảm bảo có màu nền để đổ bóng nhìn thấy được
+
+    borderWidth: 8,
+    borderColor: "#F8F7FF",
   },
   iconContainer: {
     marginRight: 12,
@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
   image: {
     height: 68,
     width: 68,
-    backgroundColor: "#fff"
   },
   description: {
     fontSize: 14,

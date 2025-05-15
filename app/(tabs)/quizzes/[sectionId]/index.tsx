@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Stack } from 'expo-router';
 import { quizzes } from '@/data/quizzes';
 import QuizElement from '@/components/QuizElement';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default function QuizListScreen() {
   const { sectionId } = useLocalSearchParams();

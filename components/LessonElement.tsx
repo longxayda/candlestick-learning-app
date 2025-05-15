@@ -36,11 +36,11 @@ const AnimatedCard = ({ children, index }) => {
 };
 
 
-export default function LessonElement({ index, title, onPress, icon }) {
+export default function LessonElement({ index, title, onPress, icon, color }) {
   return (
     <AnimatedCard index={index}>
       <Pressable style={styles.container} onPress={onPress}>
-        <View style={styles.iconContainer}>
+        <View style={[styles.iconContainer, {backgroundColor: color}]}>
           <Image source={icon} style={styles.image} />
         </View>
         <View style={styles.textContainer}>
@@ -68,9 +68,8 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     marginRight: 12,
-    backgroundColor: '#fff',
     padding: 8,
-    borderRadius: 8,
+    borderRadius: 16,
   },
   title: {
     fontSize: 16,
@@ -88,7 +87,6 @@ const styles = StyleSheet.create({
   image: {
     height: 68,
     width: 68,
-    backgroundColor: "#fff"
   },
   progress: {
     fontSize: 12,

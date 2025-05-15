@@ -1,52 +1,10 @@
-import React, { useEffect, useCallback } from "react";
-import { useFocusEffect } from '@react-navigation/native';
-
+import React from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Dimensions, Image, ImageBackground } from "react-native";
-import Animated, { SlideInDown, useSharedValue, useAnimatedStyle, withSpring, withDelay } from 'react-native-reanimated';
 import { useRouter } from 'expo-router';
 import { lessons } from '@/data/lessons';
+import AnimatedCard from "@/components/AnimatedCard";
+
 const { width } = Dimensions.get("window");
-
-
-
-const AnimatedCard = ({ children, index }) => {
-  const offset = useSharedValue(50);
-  const opacity = useSharedValue(0);
-
-  useFocusEffect(
-    useCallback(() => {
-      const delay = (index % 2) * 100 + Math.floor(index / 2) * 100;
-
-      offset.value = 50;      // reset trước khi animate
-      opacity.value = 0;
-
-      offset.value = withDelay(delay, withSpring(0, { damping: 10 }));
-      opacity.value = withDelay(delay, withSpring(1));
-
-      return () => {
-        // Optional: reset when unfocus nếu muốn
-        offset.value = 50;
-        opacity.value = 0;
-      };
-    }, [])
-  );
-
-
-  const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ translateY: offset.value }],
-    opacity: opacity.value,
-  }));
-
-  return <Animated.View style={animatedStyle}>{children}</Animated.View>;
-};
-
-// const categories = [
-//   { id: 'basics', title: "Cơ bản về Nến Nhật", courses: 15, color: "rgba(255, 180, 180, 0.5)", icon: require("../../assets/images/sections/section1.png") },
-//   { id: "reversals", title: "Nến Đảo Chiều", courses: 10, color: "rgba(180, 255, 228, 0.5)", icon: require("../../assets/images/sections/section2.png") },
-//   { id: "continuation", title: "Nến Tiếp Diễn", courses: 25, color: "rgba(30, 144, 255, 0.5)", icon: require("../../assets/images/sections/section3.png") },
-//   { id: "reversalChart", title: "Biểu Đồ Đảo Chiều", courses: 35, color: 'rgba(255, 99, 72, 0.5)', icon: require("../../assets/images/sections/section4.png") },
-//   { id: "continuationChart", title: "Biểu Đồ Tiếp Diễn", courses: 15, color: "rgba(255, 238, 180, 0.5)", icon: require("../../assets/images/sections/section5.png") },
-// ];
 
 const colors = ["rgba(255, 180, 180, 0.5)", "rgba(180, 255, 228, 0.5)", "rgba(30, 144, 255, 0.5)", 'rgba(255, 99, 72, 0.5)', "rgba(255, 238, 180, 0.5)"]
 const iconsMap = {
@@ -57,11 +15,19 @@ const iconsMap = {
   icon5: require("../../assets/images/sections/section5.png")
 }
 const res = []
+
+function getRandomHeight(): number {
+  const min = 60;
+  const max = 120;
+  const height = Math.floor(Math.random() * (max - min + 1)) + min;
+  return height;
+}
+
 Object.entries(lessons).map(([sectionId, section], index) => {
   const color = colors[index]
   const icon = iconsMap[`icon${index + 1}`];
   const courses = Object.keys(section.lessons).length
-  let obj = { id: sectionId, title: section.title, courses: courses, color: color, icon: icon }
+  let obj = { id: sectionId, title: section.title, courses: courses, color: color, icon: icon, }
   res.push(obj)
 })
 
@@ -70,7 +36,7 @@ export default function CategoryScreen() {
   const renderItem = ({ item, index }) => (
     <AnimatedCard index={index}>
       <TouchableOpacity onPress={() => router.push(`/lessons/${item.id}`)} style={[styles.card, { backgroundColor: item.color }]}>
-        {item.icon && <Image source={item.icon} style={styles.icon} />}
+        {item.icon && <Image source={item.icon} style={[styles.icon]} />}
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.course}>{item.courses} Bài học</Text>
       </TouchableOpacity>
@@ -80,22 +46,17 @@ export default function CategoryScreen() {
   return (
     <ImageBackground source={require("../../assets/images/background/Background.png")} style={styles.container}>
       <View style={styles.header}>
-        <View>
+        <View style={styles.textContainer}>
+          <AnimatedCard index={1}>
             <Text style={styles.headerTitle}>Khám phá</Text>
-            <Text style={styles.subtitle}>Hãy chọn đề tài.</Text>
+            <Text style={styles.subtitle}>Chọn một chủ đề để học nào</Text>
+          </AnimatedCard>
         </View>
-        <View>
-          <Image style={styles.headerImg} source={require("../../assets/images/sections/trangchu6.png")} />
-        </View>
+        <AnimatedCard index={1}>
+          <Image style={styles.headerImg} source={require("../../assets/images/sections/trangchu7.png")} />
+        </AnimatedCard>
       </View>
       <View style={styles.tabBar}>
-        <Text>
-          Tất cả
-        </Text>
-        <Text>
-          Yêu thích
-        </Text>
-        <Text>Đề nghị</Text>
       </View>
       <FlatList
         data={res}
@@ -106,27 +67,30 @@ export default function CategoryScreen() {
         contentContainerStyle={{ paddingBottom: 100 }}
         style={styles.flatList}
       />
+      
     </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, width: '100%', height: '100%' },
+  container: {flex: 1, width: '100%', height: '100%' },
   header: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-end',
     justifyContent: 'space-between',
-    // backgroundColor: "#6D57FC",
-    paddingTop: 60,
     paddingBottom: 30,
     paddingHorizontal: 20,
+  },
+  textContainer: {
+    flex: 1,
+    paddingRight: 20,
+    justifyContent: 'flex-end',
   },
   animationContainer: {
     flexDirection: 'row',
     backgroundColor: 'none',
     alignItems: 'center',
     justifyContent: 'center',
-
     flex: 1,
   },
   backArrow: {
@@ -147,8 +111,10 @@ const styles = StyleSheet.create({
   headerImg: {
     height: 150,
     aspectRatio: 1,
+    resizeMode: 'contain',
   },
   tabBar: {
+    flex: 1,
     flexDirection: "row",
     justifyContent: "flex-start",
     gap: 20,
@@ -162,7 +128,6 @@ const styles = StyleSheet.create({
   tab: {
     fontSize: 16,
     color: "#aaa",
-
   },
   tabActive: {
     fontSize: 16,
@@ -188,12 +153,12 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 100,
     alignSelf: "center",
+    resizeMode: 'contain',
     marginBottom: 10,
-    resizeMode: "contain",
     borderWidth: 0,
   },
   title: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "600",
     color: "#333",
     textAlign: "center",

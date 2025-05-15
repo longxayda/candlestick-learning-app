@@ -4,40 +4,7 @@ import ImageViewer from '@/components/ImageViewer';
 import QuizElement from '@/components/QuizElement';
 import { useRouter } from 'expo-router';
 import { quizzes } from '@/data/quizzes';
-
-const sections = [
-  {
-    id: "basics",
-    title: "Phần 1: Cơ bản về Nến Nhật",
-    description: "Giới thiệu cơ bản giúp người học hiểu nền tảng",
-    lessons: 5,
-  },
-  {
-    id: "reversals",
-    title: "Phần 2: Mô hình Nến Đảo Chiều",
-    description: "Xác định thị trường đảo chiều với mô hình nến quan trọng",
-    lessons: 4,
-  },
-  {
-    id: "continuation",
-    title: "Phần 3: Mô hình Nến Tiếp Diễn",
-    description: "Xác định các mô hình cho thị trường tiếp diễn",
-    lessons: 6,
-  },
-  {
-    id: "reversalChart",
-    title: "Phần 4: Mô hình Biểu Đồ Đảo Chiều",
-    description: "Các cấu trúc giá cho tín hiệu thị trường đảo chiều",
-    lessons: 5,
-  },
-  {
-    id: "continuationChart",
-    title: "Phần 5: Mô hình Biểu Đồ Tiếp Diễn",
-    description: "Các cấu trúc giá cho tín hiệu thị trường tiếp diễn",
-    lessons: 4,
-  },
-]
-
+import AnimatedCard from '@/components/AnimatedCard';
 
 const colors = ["rgba(255, 180, 180, 0.5)", "rgba(180, 255, 228, 0.5)", "rgba(30, 144, 255, 0.5)", 'rgba(255, 99, 72, 0.5)', "rgba(255, 238, 180, 0.5)"]
 const iconsMap = {
@@ -50,8 +17,9 @@ const iconsMap = {
 const res = []
 Object.entries(quizzes).map(([sectionId, section], index) => {
   const icon = iconsMap[`icon${index + 1}`];
+  const color = colors[index];
   const description = section.description;
-  let obj = { id: sectionId, title: section.title, description, icon: icon }
+  let obj = { id: sectionId, title: section.title, description, icon: icon, color: color }
   res.push(obj)
 })
 
@@ -60,26 +28,35 @@ export default function Index() {
   return (
     <ImageBackground source={require("../../assets/images/background/Background.png")} style={styles.container}>
       <View style={styles.header}>
-        <View>
-          <Text style={styles.headerTitle}>Trắc nghiệm</Text>
-          <Text style={styles.subtitle}>Hãy chọn đề tài.</Text>
+        <View style={styles.textContainer}>
+          <AnimatedCard index={1}>
+            <Text style={styles.headerTitle}>Trắc nghiệm</Text>
+            <Text style={styles.subtitle}>Thử sức với kiến thức bạn vừa học nhé!</Text>
+          </AnimatedCard>
         </View>
-        <View>
-          <Image style={styles.headerImg} source={require("../../assets/images/sections/trangchu4.png")} />
+        <View style={styles.imageContainer}>
+          <AnimatedCard index={1}>
+            <Image style={styles.headerImg} source={require("../../assets/images/sections/trangchu4.png")} />
+          </AnimatedCard>
         </View>
       </View>
+      <View style={styles.tabBar}>
+      </View>
       <ScrollView style={styles.container}>
-        {res.map((section) => (
-          <QuizElement
-            key={section.id}
-            title={section.title}
-            description={section.description}
-            icon={section.icon}
-            onPress={() => {
-              console.log(`Navigating to ${section.id}`);
-              router.push(`/quizzes/${section.id}`);
-            }}
-          />
+        {res.map((section, index) => (
+          <AnimatedCard key={section.id} index={index}>
+            <QuizElement
+              key={section.id}
+              title={section.title}
+              description={section.description}
+              icon={section.icon}
+              color={section.color}
+              onPress={() => {
+                console.log(`Navigating to ${section.id}`);
+                router.push(`/quizzes/${section.id}`);
+              }}
+            />
+          </AnimatedCard>
         ))}
       </ScrollView>
     </ImageBackground>
@@ -94,20 +71,31 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingTop: 60,
+    alignItems: 'flex-end',
     paddingBottom: 30,
     paddingHorizontal: 20,
   },
+  tabBar: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    gap: 20,
+    paddingVertical: 18,
+    paddingLeft: 16,
+    backgroundColor: "#fff",
+    borderTopLeftRadius: 35,
+    borderTopRightRadius: 35,
+    borderColor: "#eee",
+  },
   imageContainer: {
     flex: 1,
-    paddingTop: 28,
-    justifyContent: 'center',
+    alignItems: 'flex-end'
+  },
+  textContainer: {
+    flex: 1,
   },
   headerTitle: {
     color: "#fff",
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: "bold",
   },
   subtitle: {
