@@ -1,0 +1,45 @@
+{   
+    "changeLanguage": "Change language",
+    "tab": {
+        "home": "Home",
+        "quiz": "Practice",
+        "about": "About us"
+    },
+    "notFoundScreen": {
+        "title": "Oops! Not found",
+        "back": "Return"
+    },
+    "welcomeScreen": {
+        "title": "Level up your trading skills",
+        "subtitle": "Your candlestick app for fast learning.",
+        "start": "Get Started"
+    },
+    "homeScreen": {
+        "title": "Explore",
+        "subtitle": "Start by choosing a section",
+        "lesson": "lesson(s)"
+    },
+    "lessonsScreen": {
+        "back": "Back",
+        "lessons": "Lesson(s)"
+    },
+    "lessonDetailScreen": {
+        "back": "Back",
+        "next": "Next",
+        "prev": "Previous",
+        "nextSection": "Go to next Section"
+    },
+    "quizScreen": {
+        "title": "Practice",
+        "subtitle": "Apply your knowledge to these quizzes!"
+    },
+    "quizzesScreen": {
+        "back": "Back"
+    },
+    "quizDetailScreen": {
+        "back": "Back",
+        "next": "Next",
+        "prev": "Previous",
+        "nextSection": "Next Quiz Section"
+    }
+}

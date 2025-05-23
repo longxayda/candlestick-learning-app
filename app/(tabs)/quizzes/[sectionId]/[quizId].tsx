@@ -3,12 +3,16 @@ import { View, Text, ScrollView, Pressable, StyleSheet, TouchableOpacity } from 
 import { quizzes } from '@/data/quizzes';
 import { Ionicons } from '@expo/vector-icons';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { quizzesEn } from '@/data/quizzes-en';
+import ChangeLanguageButton from '@/components/ChangeLanguageButton';
 
 export default function QuizDetailScreen() {
   const { sectionId, quizId } = useLocalSearchParams();
   const router = useRouter();
+  const {t, i18n} = useTranslation();
 
-  const section = quizzes[sectionId];
+  const section = i18n.language === 'vi' ? quizzes[sectionId] : quizzesEn[sectionId];
   const quiz = section?.lessons?.[quizId];
   const nextSection = section.nextSection;
 
@@ -19,7 +23,6 @@ export default function QuizDetailScreen() {
     setSelectedOption(null);
     setIsCorrect(null);
   }, [quizId]);
-  console.log(sectionId, quizId)
 
   if (!quiz) {
     return (
@@ -47,18 +50,17 @@ export default function QuizDetailScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container} style={styles.container}>
       <Stack.Screen options={{ title: quiz.title }} />
-
+      <ChangeLanguageButton />
       <Pressable
         onPress={() => router.push(`/quizzes/${sectionId}`)}
         style={styles.backButton}
       >
         <Ionicons name="arrow-back" size={20} color="#111" />
-        <Text style={styles.backText}>Quay về</Text>
+        <Text style={styles.backText}>{t('quizDetailScreen.back')}</Text>
       </Pressable>
 
 
       <Text style={styles.question}>{quiz.content.question}</Text>
-
       {quiz.content.options.map((option, index) => (
         <TouchableOpacity
           key={index}
@@ -71,7 +73,7 @@ export default function QuizDetailScreen() {
 
       {isCorrect !== null && (
         <Text style={[styles.resultText, { color: isCorrect ? 'green' : 'red' }]}>
-          {isCorrect ? 'Chính xác!' : 'Sai rồi! Hãy thử lại.'}
+          {isCorrect ? (i18n.language === 'vi' ? 'Chính xác!' : 'Correct!') : (i18n.language === 'vi' ? 'Sai rồi! Hãy thử lại.' : 'Try again!')}
         </Text>
       )}
 
@@ -79,17 +81,17 @@ export default function QuizDetailScreen() {
         {quiz.previousQuiz && (
           <Pressable
             onPress={() => router.push(`/quizzes/${sectionId}/${quiz.previousQuiz}`)}
-            style={styles.navButton}
+            style={styles.buttonPrev}
           >
-            <Text style={styles.navButtonText}>Câu trước</Text>
+            <Text style={styles.navButtonText}>{t('quizDetailScreen.prev')}</Text>
           </Pressable>
         )}
         {quiz.nextQuiz && (
           <Pressable
             onPress={() => router.push(`/quizzes/${sectionId}/${quiz.nextQuiz}`)}
-            style={styles.navButton}
+            style={styles.buttonNext}
           >
-            <Text style={styles.navButtonText}>Câu sau</Text>
+            <Text style={styles.navButtonText}>{t('quizDetailScreen.next')}</Text>
           </Pressable>
         )}
       </View>
@@ -99,7 +101,7 @@ export default function QuizDetailScreen() {
           onPress={() => router.push(`/quizzes/${nextSection}`)}
           style={styles.nextSectionButton}
         >
-          <Text style={styles.nextSectionText}>Phần trắc nghiệm tiếp theo</Text>
+          <Text style={styles.nextSectionText}>{t('quizDetailScreen.nextSection')}</Text>
         </Pressable>
       )}
     </ScrollView>
@@ -130,6 +132,7 @@ const styles = StyleSheet.create({
   question: {
     fontSize: 18,
     marginBottom: 16,
+    fontWeight: 'bold',
   },
   option: {
     padding: 12,
@@ -163,8 +166,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 8,
   },
+  buttonPrev: {
+    flex: 1,
+    backgroundColor: '#rgba(255, 180, 180, 0.5)',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+  },
+  buttonNext: {
+    flex: 1,
+    backgroundColor: '#rgba(30, 144, 255, 0.5)',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+  },
+
   navButtonText: {
-    color: '#fff',
+    color: '#111',
     fontSize: 16,
     textAlign: 'center',
   },

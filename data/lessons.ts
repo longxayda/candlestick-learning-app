@@ -432,7 +432,7 @@ export const lessons = {
       },
       roundingTopBottom: {
         title: "Bài 14: Mô hình Đỉnh Cong & Đáy Cong",
-        uri: require("../assets/images/sections/lesson14.jpg"),
+        uri: require("../assets/images/sections/lesson14.png"),
         content: [
           {
             type: "text",

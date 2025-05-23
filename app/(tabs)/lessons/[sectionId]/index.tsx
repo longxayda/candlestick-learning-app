@@ -4,12 +4,16 @@ const { width } = Dimensions.get("window");
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { lessons } from '@/data/lessons';
+import { lessonsEn } from '@/data/lessons-en';
 import LessonElement from '@/components/LessonElement';
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useTranslation } from "react-i18next";
+import ChangeLanguageButton from "@/components/ChangeLanguageButton";
 
 export default function CategoryScreen() {
+  const { t, i18n } = useTranslation();
   const { sectionId } = useLocalSearchParams();
-  const section = lessons[sectionId];
+  const section = i18n.language === 'vi' ? lessons[sectionId] : lessonsEn[sectionId];
   const backgroundImg = section?.backgroundImg;
   const lessonList = section?.lessons ?? {};
   const lessonListLength = Object.keys(lessonList).length;
@@ -20,6 +24,9 @@ export default function CategoryScreen() {
   const colors = ["rgba(255, 180, 180, 0.5)", "rgba(180, 255, 228, 0.5)", "rgba(30, 144, 255, 0.5)", 'rgba(255, 99, 72, 0.5)', "rgba(255, 238, 180, 0.5)"]
   return (
     <SafeAreaView style={styles.background}>
+      <View style={{ paddingTop: 16 }}>
+        <ChangeLanguageButton color={'white'} />
+      </View>
       <View style={styles.header}>
         <View style={styles.buttonContainer}>
           <Pressable
@@ -29,7 +36,7 @@ export default function CategoryScreen() {
             }}
           >
             <Ionicons name="arrow-back" size={20} color="#fff" />
-            <Text style={{ marginLeft: 6, fontSize: 16, color: '#fff' }}>Quay về</Text>
+            <Text style={{ marginLeft: 6, fontSize: 16, color: '#fff' }}>{t('lessonsScreen.back')}</Text>
           </Pressable>
         </View>
         <View style={styles.textContainer}>
@@ -37,8 +44,8 @@ export default function CategoryScreen() {
           <Text style={styles.subtitle}>{section.description}</Text>
         </View>
       </View>
-      <ScrollView style={styles.backgroundContainer}>
-        <ImageBackground source={backgroundImg}>
+      <ImageBackground source={backgroundImg} style={{ flex: 1, overflow: 'hidden', borderTopLeftRadius: 30, borderTopRightRadius: 30 }}>
+        <ScrollView contentContainerStyle={styles.backgroundContainer}>
           <View style={styles.overlay}>
             <View style={styles.tabBar}>
               {previousSection ? (
@@ -48,7 +55,7 @@ export default function CategoryScreen() {
               ) : <TouchableOpacity disabled style={{ opacity: 0.3 }}>
                 <Text style={styles.tabActive}><Ionicons name="arrow-back" size={20} /></Text>
               </TouchableOpacity>}
-              <Text style={styles.tabActive}>{lessonListLength} Bài học</Text>
+              <Text style={styles.tabActive}>{lessonListLength} {t('lessonsScreen.lessons')}</Text>
               {nextSection ? (
                 <TouchableOpacity onPress={() => router.push(`/lessons/${nextSection}`)}>
                   <Text style={styles.tabActive}><Ionicons name="arrow-forward" size={20} /></Text>
@@ -73,8 +80,8 @@ export default function CategoryScreen() {
               </LessonElement>
             ))}
           </View>
-        </ImageBackground>
-      </ScrollView>
+        </ScrollView>
+      </ImageBackground>
     </SafeAreaView>
   );
 }
@@ -83,7 +90,8 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#6D57FC" },
   header: {
     justifyContent: 'space-between',
-    paddingBottom: 30,
+    // paddingBottom: 30,
+    gap: 16,
     paddingHorizontal: 20,
     marginVertical: 16,
   },
@@ -105,10 +113,11 @@ const styles = StyleSheet.create({
   buttonContainer: {
   },
   textContainer: {
+
   },
   backgroundContainer: {
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
+    flexGrow: 1,
+    paddingBottom: 16
   },
   tabBar: {
     flexDirection: 'row',

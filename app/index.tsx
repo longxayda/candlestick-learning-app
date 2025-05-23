@@ -1,17 +1,16 @@
-import { View, Text, Image, StyleSheet, Animated, ImageBackground } from 'react-native';
+import { View, Text, Image, StyleSheet, Animated, ImageBackground, TouchableOpacity } from 'react-native';
 import React, { useEffect, useRef } from 'react'
 import { useRouter } from 'expo-router';
-import LottieView from 'lottie-react-native';
 import { TouchableWithoutFeedback } from 'react-native';
+import '../i18n/i18n.config';
+import { useTranslation } from 'react-i18next';
+import ChangeLanguageButton from '@/components/ChangeLanguageButton';
 
 export default function WelcomeScreen() {
   const router = useRouter();
+  const { t } = useTranslation()
   let runAnimation;
   const bounceAnim = useRef(new Animated.Value(1)).current;
-
-  // useEffect(() => {
-  //   runAnimation.play();
-  // }, [])
 
   useEffect(() => {
     runAnimation?.play();
@@ -35,18 +34,19 @@ export default function WelcomeScreen() {
 
   return (
     <ImageBackground source={require('../assets/images/background/Background.png')} style={styles.container}>
+      <ChangeLanguageButton />
       <Animated.View style={[{ transform: [{ scale: bounceAnim }] }]}>
         <Image style={styles.image} source={require('../assets/images/welcome/2.png')} />
       </Animated.View>
       <View style={styles.textContainer}>
-        <Text style={styles.title}>Nâng cao kỹ năng giao dịch</Text>
-        <Text style={styles.subtitle}>Ứng dụng học Mô hình Nến – Học nhanh, nhớ lâu!</Text>
+        <Text style={styles.title}>{t('welcomeScreen.title')}</Text>
+        <Text style={styles.subtitle}>{t('welcomeScreen.subtitle')}</Text>
         <TouchableWithoutFeedback
           style={styles.button}
           onPress={() => router.replace('/(tabs)/home')} // replace để không quay lại được welcome
         >
           <Animated.View style={[styles.button, { transform: [{ scale: bounceAnim }] }]}>
-            <Text style={styles.buttonText}>Bắt đầu nào!</Text>
+            <Text style={styles.buttonText}>{t('welcomeScreen.start')}</Text>
           </Animated.View>
         </TouchableWithoutFeedback>
       </View>
@@ -56,6 +56,7 @@ export default function WelcomeScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center', height: '100%', width: '100%' },
+
   textContainer: {
     alignItems: 'center',
     marginHorizontal: 18,

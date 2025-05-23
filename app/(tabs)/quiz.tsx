@@ -1,10 +1,11 @@
-import { SafeAreaView, ScrollView, View, StyleSheet, ImageBackground, Text, Image } from 'react-native';
-import Button from '@/components/Button';
-import ImageViewer from '@/components/ImageViewer';
+import { ScrollView, View, StyleSheet, ImageBackground, Text, Image } from 'react-native';
 import QuizElement from '@/components/QuizElement';
 import { useRouter } from 'expo-router';
 import { quizzes } from '@/data/quizzes';
+import { quizzesEn } from '@/data/quizzes-en';
 import AnimatedCard from '@/components/AnimatedCard';
+import { useTranslation } from 'react-i18next';
+import ChangeLanguageButton from '@/components/ChangeLanguageButton';
 
 const colors = ["rgba(255, 180, 180, 0.5)", "rgba(180, 255, 228, 0.5)", "rgba(30, 144, 255, 0.5)", 'rgba(255, 99, 72, 0.5)', "rgba(255, 238, 180, 0.5)"]
 const iconsMap = {
@@ -14,24 +15,29 @@ const iconsMap = {
   icon4: require("../../assets/images/sections/section4.png"),
   icon5: require("../../assets/images/sections/section5.png")
 }
-const res = []
-Object.entries(quizzes).map(([sectionId, section], index) => {
-  const icon = iconsMap[`icon${index + 1}`];
-  const color = colors[index];
-  const description = section.description;
-  let obj = { id: sectionId, title: section.title, description, icon: icon, color: color }
-  res.push(obj)
-})
 
 export default function Index() {
   const router = useRouter();
+  const {t, i18n} = useTranslation();
+  const res = []
+  Object.entries(i18n.language === 'vi' ? quizzes: quizzesEn).map(([sectionId, section], index) => {
+    const icon = iconsMap[`icon${index + 1}`];
+    const color = colors[index];
+    const description = section.description;
+    let obj = { id: sectionId, title: section.title, description, icon: icon, color: color }
+    res.push(obj)
+  })
+
   return (
     <ImageBackground source={require("../../assets/images/background/Background.png")} style={styles.container}>
+      <View style={{paddingTop: 16}}>
+        <ChangeLanguageButton color={'white'} />
+      </View>
       <View style={styles.header}>
         <View style={styles.textContainer}>
           <AnimatedCard index={1}>
-            <Text style={styles.headerTitle}>Trắc nghiệm</Text>
-            <Text style={styles.subtitle}>Thử sức với kiến thức bạn vừa học nhé!</Text>
+            <Text style={styles.headerTitle}>{t('quizScreen.title')}</Text>
+            <Text style={styles.subtitle}>{t('quizScreen.subtitle')}</Text>
           </AnimatedCard>
         </View>
         <View style={styles.imageContainer}>

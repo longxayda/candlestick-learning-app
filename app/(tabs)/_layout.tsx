@@ -1,9 +1,10 @@
 import { Tabs } from 'expo-router';
 
 import Ionicons from '@expo/vector-icons/Ionicons';
-
+import { useTranslation } from 'react-i18next';
 
 export default function TabLayout() {
+  const {t} = useTranslation();
   return (
     <Tabs
       screenOptions={{
@@ -22,7 +23,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="home"
         options={{
-          title: 'Trang chủ',
+          title: t('tab.home'),
           tabBarIcon: ({ color, focused }) => (
             <Ionicons name={focused ? 'home-sharp' : 'home-outline'} color={color} size={24} />
           ),
@@ -31,7 +32,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="quiz"
         options={{
-          title: 'Trắc nghiệm',
+          title: t('tab.quiz'),
           tabBarIcon: ({ color, focused }) => (
             <Ionicons name={focused ? 'information-circle' : 'information-circle-outline'} color={color} size={24} />
           ),
@@ -40,7 +41,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="about"
         options={{
-          title: 'Về chúng tôi',
+          title: t('tab.about'),
           tabBarIcon: ({ color, focused }) => (
             <Ionicons name={focused ? 'information-circle' : 'information-circle-outline'} color={color} size={24} />
           ),
@@ -75,12 +76,6 @@ export default function TabLayout() {
         options={{
           href: null,
         }} />
-
-      {/* <Tabs.Screen
-        name="welcome"
-        options={{
-          href: null,
-        }} /> */}
     </Tabs>
   );
 }

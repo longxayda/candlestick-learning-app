@@ -2,20 +2,24 @@ import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
 import { View, Text, ScrollView, Image, Pressable, Button, StyleSheet } from 'react-native';
 import { lessons } from '@/data/lessons';
 import { Ionicons } from '@expo/vector-icons';
+import { useTranslation } from 'react-i18next';
+import ChangeLanguageButton from '@/components/ChangeLanguageButton';
+import { lessonsEn } from '@/data/lessons-en';
 
 
 export default function LessonDetailScreen() {
   const { sectionId, lessonId } = useLocalSearchParams();
   const router = useRouter();
-
-  const section = lessons[sectionId];
+  const {t, i18n} = useTranslation();
+  const section = i18n.language === 'vi' ? lessons[sectionId] : lessonsEn[sectionId];
   const lesson = section?.lessons?.[lessonId];
   const nextSection = section.nextSection;
 
   if (!lesson) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Không tìm thấy bài học.</Text>
+        <ChangeLanguageButton />
+        <Text>{t('lessonDetailScreen.notFound')}</Text>
         <Pressable
           style={{
             marginTop: 24,
@@ -26,7 +30,7 @@ export default function LessonDetailScreen() {
           }}
           onPress={() => router.push('/')}>
           <Text style={{ color: '#fff', fontSize: 16, textAlign: 'center' }}>
-            Trang chủ
+            {t('lessonDetailScreen.home')}
           </Text>
         </Pressable>
       </View>
@@ -35,6 +39,7 @@ export default function LessonDetailScreen() {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ padding: 16 }}>
+      <ChangeLanguageButton />
       <Stack.Screen
         options={{
           title: lesson.title,
@@ -46,7 +51,7 @@ export default function LessonDetailScreen() {
         style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}
       >
         <Ionicons name="arrow-back" size={20} color="#4B5563" />
-        <Text style={{ marginLeft: 6, fontSize: 16, color: '#4B5563' }}>Quay về</Text>
+        <Text style={{ marginLeft: 6, fontSize: 16, color: '#4B5563' }}>{t('lessonDetailScreen.back')}</Text>
       </Pressable>
 
       <Text style={{ fontSize: 22, fontWeight: 'bold', marginBottom: 16 }}>
@@ -89,20 +94,20 @@ export default function LessonDetailScreen() {
                 console.log("Navigate to", lesson.previousLesson)
                 router.push(`/lessons/${sectionId}/${lesson.previousLesson}`)
               }}
-              style={styles.button}
+              style={styles.buttonPrev}
             >
-              <Text style={{ color: '#fff', fontSize: 16, textAlign: 'center' }}>
-                Trước đó
+              <Text style={{ color: '#111', fontSize: 16, textAlign: 'center' }}>
+                {t('lessonDetailScreen.prev')}
               </Text>
             </Pressable>
           )}
           {lesson.nextLesson && (
             <Pressable
               onPress={() => router.push(`/lessons/${sectionId}/${lesson.nextLesson}`)}
-              style={styles.button}
+              style={styles.buttonNext}
             >
-              <Text style={{ color: '#fff', fontSize: 16, textAlign: 'center' }}>
-                Tiếp theo
+              <Text style={{ color: '#111', fontSize: 16, textAlign: 'center' }}>
+                {t('lessonDetailScreen.next')}
               </Text>
             </Pressable>
           )}
@@ -119,7 +124,7 @@ export default function LessonDetailScreen() {
           style={styles.buttonNextSection}
         >
           <Text style={{ color: '#fff', fontSize: 16, textAlign: 'center' }}>
-            Phần tiếp theo
+            {t('lessonDetailScreen.nextSection')}
           </Text>
         </Pressable>
       )}
@@ -144,9 +149,16 @@ const styles = StyleSheet.create({
     gap: 12,
     marginTop: 32,
   },
-  button: {
+  buttonNext: {
     flex: 1,
-    backgroundColor: '#6D57FC',
+    backgroundColor: '#rgba(30, 144, 255, 0.5)',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+  },
+  buttonPrev: {
+    flex: 1,
+    backgroundColor: '#rgba(255, 180, 180, 0.5)',
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 8,

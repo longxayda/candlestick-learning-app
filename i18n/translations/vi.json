@@ -1,0 +1,45 @@
+{
+    "changeLanguage": "Change language",
+    "tab": {
+        "home": "Trang chủ",
+        "quiz": "Trắc nghiệm",
+        "about": "Về chúng tôi"
+    },
+    "notFoundScreen": {
+        "title": "Oops! Không tìm thấy trang",
+        "back": "Quay lại"
+    },
+    "welcomeScreen": {
+        "title": "Nâng cao kỹ năng giao dịch",
+        "subtitle": "Ứng dụng Mô hình nến - Học nhanh, nhớ lâu",
+        "start": "Bắt đầu nào!"
+    },
+    "homeScreen": {
+        "title": "Khám phá",
+        "subtitle": "Chọn một chủ đề để học",
+        "lesson": "bài học"
+    },
+    "lessonsScreen": {
+        "back": "Quay về",
+        "lessons": "bài học"
+    },
+    "lessonDetailScreen": {
+        "back": "Quay về",
+        "next": "Bài kế",
+        "prev": "Bài trước",
+        "nextSection": "Phần kế"
+    },
+    "quizScreen": {
+        "title": "Trắc nghiệm",
+        "subtitle": "Thử sức với kiến thức bạn vừa học nhé"
+    },
+    "quizzesScreen": {
+        "back": "Quay về"
+    },
+    "quizDetailScreen": {
+        "back": "Quay về",
+        "next": "Câu sau",
+        "prev": "Câu trước",
+        "nextSection": "Phần trắc nghiệm tiếp theo"
+    }
+}

@@ -1,13 +1,15 @@
 import { View, StyleSheet } from 'react-native';
 import { Link, Stack } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 
 export default function NotFoundScreen() {
+  const {t} = useTranslation()
   return (
     <>
-      <Stack.Screen options={{ title: 'Oops! Không tìm thấy' }} />
+      <Stack.Screen options={{ title: t('notFoundScreen.title') }} />
       <View style={styles.container}>
         <Link href="/" style={styles.button}>
-          Quay về Trang chủ!
+          {t('notFoundScreen.back')}
         </Link>
       </View>
     </>

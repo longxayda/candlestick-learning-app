@@ -1,4 +1,4 @@
-import { StyleSheet, View, Pressable, Text, Image } from 'react-native';
+import { StyleSheet, View, Pressable, Text, Image, TouchableOpacity } from 'react-native';
 import React, { useCallback } from "react";
 import { useFocusEffect } from '@react-navigation/native';
 import Animated, { useSharedValue, useAnimatedStyle, withSpring, withDelay } from 'react-native-reanimated';
@@ -39,14 +39,14 @@ const AnimatedCard = ({ children, index }) => {
 export default function LessonElement({ index, title, onPress, icon, color }) {
   return (
     <AnimatedCard index={index}>
-      <Pressable style={styles.container} onPress={onPress}>
+      <TouchableOpacity style={styles.container} onPress={onPress}>
         <View style={[styles.iconContainer, {backgroundColor: color}]}>
           <Image source={icon} style={styles.image} />
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.title}>{title}</Text>
         </View>
-      </Pressable>
+      </TouchableOpacity>
     </AnimatedCard>
   );
 }

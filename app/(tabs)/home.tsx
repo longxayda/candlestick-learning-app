@@ -2,7 +2,11 @@ import React from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Dimensions, Image, ImageBackground } from "react-native";
 import { useRouter } from 'expo-router';
 import { lessons } from '@/data/lessons';
+import { lessonsEn } from '@/data/lessons-en';
 import AnimatedCard from "@/components/AnimatedCard";
+import { useTranslation } from "react-i18next";
+import ChangeLanguageButton from "@/components/ChangeLanguageButton";
+
 
 const { width } = Dimensions.get("window");
 
@@ -14,42 +18,41 @@ const iconsMap = {
   icon4: require("../../assets/images/sections/section4.png"),
   icon5: require("../../assets/images/sections/section5.png")
 }
-const res = []
 
-function getRandomHeight(): number {
-  const min = 60;
-  const max = 120;
-  const height = Math.floor(Math.random() * (max - min + 1)) + min;
-  return height;
-}
-
-Object.entries(lessons).map(([sectionId, section], index) => {
-  const color = colors[index]
-  const icon = iconsMap[`icon${index + 1}`];
-  const courses = Object.keys(section.lessons).length
-  let obj = { id: sectionId, title: section.title, courses: courses, color: color, icon: icon, }
-  res.push(obj)
-})
 
 export default function CategoryScreen() {
+  const { t, i18n } = useTranslation();
+
+  const res = []
+  Object.entries(i18n.language === 'vi' ? lessons : lessonsEn).map(([sectionId, section], index) => {
+    const color = colors[index]
+    const icon = iconsMap[`icon${index + 1}`];
+    const courses = Object.keys(section.lessons).length
+    let obj = { id: sectionId, title: section.title, courses: courses, color: color, icon: icon, }
+    res.push(obj)
+  })
+
 
   const renderItem = ({ item, index }) => (
     <AnimatedCard index={index}>
       <TouchableOpacity onPress={() => router.push(`/lessons/${item.id}`)} style={[styles.card, { backgroundColor: item.color }]}>
         {item.icon && <Image source={item.icon} style={[styles.icon]} />}
         <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.course}>{item.courses} Bài học</Text>
+        <Text style={styles.course}>{item.courses} {t('homeScreen.lesson')}</Text>
       </TouchableOpacity>
     </AnimatedCard>
   );
   const router = useRouter();
   return (
     <ImageBackground source={require("../../assets/images/background/Background.png")} style={styles.container}>
+      <View style={{paddingTop: 16}}>
+        <ChangeLanguageButton color={'white'} />
+      </View>
       <View style={styles.header}>
         <View style={styles.textContainer}>
           <AnimatedCard index={1}>
-            <Text style={styles.headerTitle}>Khám phá</Text>
-            <Text style={styles.subtitle}>Chọn một chủ đề để học nào</Text>
+            <Text style={styles.headerTitle}>{t('homeScreen.title')}</Text>
+            <Text style={styles.subtitle}>{t('homeScreen.subtitle')}</Text>
           </AnimatedCard>
         </View>
         <AnimatedCard index={1}>
@@ -67,13 +70,12 @@ export default function CategoryScreen() {
         contentContainerStyle={{ paddingBottom: 100 }}
         style={styles.flatList}
       />
-      
     </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {flex: 1, width: '100%', height: '100%' },
+  container: { flex: 1, width: '100%', height: '100%' },
   header: {
     flexDirection: 'row',
     alignItems: 'flex-end',

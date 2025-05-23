@@ -24,7 +24,7 @@ export default function Index() {
 
         <Text style={styles.paragraph}>
           🌐 <Text style={styles.bold}>Website:</Text> justivalaw.com{'\n'}
-          📧 <Text style={styles.bold}>Email:</Text> justivalaw@gmail.com
+          📧 <Text style={styles.bold}>Email:</Text> info@justivalaw.com
         </Text>
       </ScrollView>
     </SafeAreaView>

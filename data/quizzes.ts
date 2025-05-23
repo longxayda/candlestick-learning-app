@@ -234,7 +234,7 @@ export const quizzes = {
       },
       roundingTopBottom: {
         title: "Trắc nghiệm bài 14: Đỉnh Tròn & Đáy Tròn",
-        uri: require("../assets/images/sections/lesson14.jpg"),
+        uri: require("../assets/images/sections/lesson14.png"),
         content: {
           question: "Mô hình Đáy Tròn (Rounding Bottom) báo hiệu gì?",
           answer: 2,
