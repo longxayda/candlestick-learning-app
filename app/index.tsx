@@ -34,7 +34,6 @@ export default function WelcomeScreen() {
 
   return (
     <ImageBackground source={require('../assets/images/background/Background.png')} style={styles.container}>
-      <ChangeLanguageButton />
       <Animated.View style={[{ transform: [{ scale: bounceAnim }] }]}>
         <Image style={styles.image} source={require('../assets/images/welcome/2.png')} />
       </Animated.View>

@@ -18,9 +18,9 @@ const iconsMap = {
 
 export default function Index() {
   const router = useRouter();
-  const {t, i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
   const res = []
-  Object.entries(i18n.language === 'vi' ? quizzes: quizzesEn).map(([sectionId, section], index) => {
+  Object.entries(i18n.language === 'vi' ? quizzes : quizzesEn).map(([sectionId, section], index) => {
     const icon = iconsMap[`icon${index + 1}`];
     const color = colors[index];
     const description = section.description;
@@ -30,9 +30,6 @@ export default function Index() {
 
   return (
     <ImageBackground source={require("../../assets/images/background/Background.png")} style={styles.container}>
-      <View style={{paddingTop: 16}}>
-        <ChangeLanguageButton color={'white'} />
-      </View>
       <View style={styles.header}>
         <View style={styles.textContainer}>
           <AnimatedCard index={1}>

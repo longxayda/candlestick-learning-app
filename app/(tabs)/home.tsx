@@ -45,9 +45,6 @@ export default function CategoryScreen() {
   const router = useRouter();
   return (
     <ImageBackground source={require("../../assets/images/background/Background.png")} style={styles.container}>
-      <View style={{paddingTop: 16}}>
-        <ChangeLanguageButton color={'white'} />
-      </View>
       <View style={styles.header}>
         <View style={styles.textContainer}>
           <AnimatedCard index={1}>

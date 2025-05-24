@@ -39,7 +39,6 @@ export default function LessonDetailScreen() {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ padding: 16 }}>
-      <ChangeLanguageButton />
       <Stack.Screen
         options={{
           title: lesson.title,

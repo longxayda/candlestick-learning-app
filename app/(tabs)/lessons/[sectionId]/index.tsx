@@ -24,9 +24,6 @@ export default function CategoryScreen() {
   const colors = ["rgba(255, 180, 180, 0.5)", "rgba(180, 255, 228, 0.5)", "rgba(30, 144, 255, 0.5)", 'rgba(255, 99, 72, 0.5)', "rgba(255, 238, 180, 0.5)"]
   return (
     <SafeAreaView style={styles.background}>
-      <View style={{ paddingTop: 16 }}>
-        <ChangeLanguageButton color={'white'} />
-      </View>
       <View style={styles.header}>
         <View style={styles.buttonContainer}>
           <Pressable

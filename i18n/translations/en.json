@@ -1,9 +1,10 @@
-{   
+{
     "changeLanguage": "Change language",
     "tab": {
         "home": "Home",
         "quiz": "Practice",
-        "about": "About us"
+        "about": "About us",
+        "settings": "Settings"
     },
     "notFoundScreen": {
         "title": "Oops! Not found",
@@ -41,5 +42,17 @@
         "next": "Next",
         "prev": "Previous",
         "nextSection": "Next Quiz Section"
+    },
+    "settingsScreen": {
+        "title": "Settings",
+        "appSettings": "App Settings",
+        "language": "Language",
+        "vi": "Vietnamese",
+        "en": "English",
+        "terms": "Help and Terms Of Use",
+        "privacy": "Privacy Policy",
+        "share": "Share",
+        "rate": "Rate us on Play Store",
+        "facebook": "Like us on Facebook"
     }
 }

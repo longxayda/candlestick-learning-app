@@ -50,7 +50,6 @@ export default function QuizDetailScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container} style={styles.container}>
       <Stack.Screen options={{ title: quiz.title }} />
-      <ChangeLanguageButton />
       <Pressable
         onPress={() => router.push(`/quizzes/${sectionId}`)}
         style={styles.backButton}

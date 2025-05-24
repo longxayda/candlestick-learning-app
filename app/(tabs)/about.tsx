@@ -6,9 +6,6 @@ export default function Index() {
   const { i18n } = useTranslation();
   return (
     <SafeAreaView style={styles.safeContainer}>
-      <View style={{ paddingTop: 16 }}>
-        <ChangeLanguageButton color={'white'} />
-      </View>
       <ScrollView contentContainerStyle={styles.container}>
         <Image
           source={require('../../assets/images/about/jlf.png')}

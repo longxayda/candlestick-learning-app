@@ -2,7 +2,7 @@ export const lessons = {
   basics: {
     title: "Phần 1: Cơ bản về Nến Nhật",
     description: "Tìm hiểu những kiến thức nền tảng về mô hình nến Nhật",
-    backgroundImg: require("../assets/images/background/section1.jpg"),
+    backgroundImg: require("../assets/images/background/section1.png"),
     lessons: {
       intro: {
         title: "Bài 1: Nến Nhật là gì?",
@@ -123,7 +123,7 @@ export const lessons = {
   reversals: {
     title: "Phần 2: Mô hình nến đảo chiều",
     description: "Nhận biết các mô hình nến báo hiệu khả năng đảo chiều xu hướng",
-    backgroundImg: require("../assets/images/background/section2.jpg"),
+    backgroundImg: require("../assets/images/background/section2.png"),
     lessons: {
       hammer: {
         title: "Bài 5: Nến Búa & Nến Búa Ngược",
@@ -254,7 +254,7 @@ export const lessons = {
   continuation: {
     title: "Phần 3: Mô hình Nến Tiếp Diễn",
     description: "Nhận biết các mô hình nến báo hiệu xu hướng hiện tại có khả năng tiếp tục",
-    backgroundImg: require("../assets/images/background/section3.jpg"),
+    backgroundImg: require("../assets/images/background/section3.png"),
     lessons: {
       "rising-three-methods": {
         title: "Bài 9: Ba Nến Tăng Liên Tiếp & Ba Nến Giảm Liên Tiếp",
@@ -362,7 +362,7 @@ export const lessons = {
   reversalChart: {
     title: "Phần 4: Mô hình Biểu Đồ Đảo Chiều",
     description: "Nhận biết các mô hình biểu đồ báo hiệu khả năng đảo chiều xu hướng",
-    backgroundImg: require("../assets/images/background/section4.jpg"),
+    backgroundImg: require("../assets/images/background/section4.png"),
     lessons: {
       doubleTopBottom: {
         title: "Bài 12: Mô hình Hai Đỉnh & Hai Đáy",
@@ -498,7 +498,7 @@ export const lessons = {
   continuationChart: {
     title: "Phần 5: Mô hình Biểu Đồ Tiếp Diễn",
     description: "Các mô hình giá báo hiệu xu hướng hiện tại sẽ tiếp tục sau giai đoạn tích lũy hoặc điều chỉnh",
-    backgroundImg: require("../assets/images/background/section5.jpg"),
+    backgroundImg: require("../assets/images/background/section5.png"),
     lessons: {
       flag: {
         title: "Bài 16: Lá cờ & Cờ đuôi nheo",

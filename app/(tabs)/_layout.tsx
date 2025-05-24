@@ -34,7 +34,7 @@ export default function TabLayout() {
         options={{
           title: t('tab.quiz'),
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons name={focused ? 'information-circle' : 'information-circle-outline'} color={color} size={24} />
+            <Ionicons name={focused ? 'book' : 'book-outline'} color={color} size={24} />
           ),
         }}
       />
@@ -43,7 +43,16 @@ export default function TabLayout() {
         options={{
           title: t('tab.about'),
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons name={focused ? 'information-circle' : 'information-circle-outline'} color={color} size={24} />
+            <Ionicons name={focused ? 'people' : 'people-outline'} color={color} size={24} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: t('tab.settings'),
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons name={focused ? 'settings' : 'settings-outline'} color={color} size={24} />
           ),
         }}
       />

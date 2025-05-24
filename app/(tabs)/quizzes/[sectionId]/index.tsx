@@ -21,9 +21,6 @@ export default function QuizListScreen() {
           title: section?.title || 'Quizzes',
         }}
       />
-      <View style={{paddingTop: 16}}>
-        <ChangeLanguageButton color={'white'} />
-      </View>
       {/* Breadcrumb / Back / Home */}
       <Pressable
         onPress={() => router.push(`/quiz`)}

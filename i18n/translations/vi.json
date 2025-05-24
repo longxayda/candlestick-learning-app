@@ -3,7 +3,8 @@
     "tab": {
         "home": "Trang chủ",
         "quiz": "Trắc nghiệm",
-        "about": "Về chúng tôi"
+        "about": "Về chúng tôi",
+        "settings": "Cấu hình"
     },
     "notFoundScreen": {
         "title": "Oops! Không tìm thấy trang",
@@ -41,5 +42,17 @@
         "next": "Câu sau",
         "prev": "Câu trước",
         "nextSection": "Phần trắc nghiệm tiếp theo"
+    },
+    "settingsScreen": {
+        "title": "Cấu hình",
+        "appSettings": "Cấu hình ứng dụng",
+        "language": "Ngôn ngữ",
+        "vi": "Tiếng Việt",
+        "en": "Tiếng Anh",
+        "terms": "Điều khoản sử dụng",
+        "privacy": "Điều khoản bảo mật",
+        "share": "Chia sẻ",
+        "rate": "Đánh giá ứng dụng trên Play Store",
+        "facebook": "Theo dõi chúng tôi trên Facebook"
     }
 }
