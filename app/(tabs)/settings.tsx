@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'expo-router';
 import { View, Text, TouchableOpacity, Linking, ScrollView, StyleSheet } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
@@ -33,11 +34,30 @@ const SettingsScreen = () => {
         }
     }, [showLanguageScreen, selectedLanguage]);
 
+    // Set default language 
+    React.useEffect(() => {
+        const loadLanguage = async () => {
+            try {
+                // const storedLang = await AsyncStorage.getItem('appLanguage');
+                // const langToUse = storedLang || i18n.language;
+                const langToUse = i18n.language;
+                setSelectedLanguage(langToUse);
+                await i18n.changeLanguage(langToUse);
+            } catch (e) {
+                console.error('Failed to load saved language:', e);
+            }
+        };
+        loadLanguage();
+    }, [])
+
     // Find selected language object
     const selectedLangObj = languages.find(l => l.code === selectedLanguage) || languages[0];
-    const handleChangeLanguage = (selectedLanguage) => {
-        console.log("Selected lang: ", selectedLanguage)
-        i18n.changeLanguage(selectedLanguage);
+    const handleChangeLanguage = async (selectedLanguage) => {
+        try {
+            await i18n.changeLanguage(selectedLanguage);
+        } catch (e) {
+            console.error('Failed to change language:', e);
+        }
 
     }
     if (showLanguageScreen) {
@@ -94,7 +114,7 @@ const SettingsScreen = () => {
                                     elevation: pendingLanguage === lang.code ? 2 : 0,
                                 }
                             ]}
-                            onPress={() => {console.log(lang.code); setPendingLanguage(lang.code)}}
+                            onPress={() => { console.log(lang.code); setPendingLanguage(lang.code) }}
                         >
                             <Text style={{ fontSize: 28, marginRight: 16 }}>{languageFlags[lang.code]}</Text>
                             <Text style={{ fontSize: 16, fontWeight: pendingLanguage === lang.code ? 'bold' : 'normal', color: '#222' }}>{lang.label}</Text>
