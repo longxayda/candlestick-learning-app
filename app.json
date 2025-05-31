@@ -1,22 +1,32 @@
 {
   "expo": {
-    "name": "candlestick_app",
-    "slug": "candlestick_app",
+    "name": "Trading Essence - Cốt lõi giao dịch",
+    "slug": "Trading Essence - Cốt lõi giao dịch",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
+    "androidStatusBar": {
+      "hidden": false,
+      "translucent": false,
+      "barStyle": "dark-content",
+      "backgroundColor": "#ffffff"
+    },
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.justivalaw.tradingessence",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.lyan.candlestick"
+      "package": "com.justivalaw.tradingessence"
     },
     "web": {
       "bundler": "metro",
@@ -32,6 +42,12 @@
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
+        }
+      ],
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-7369865200765576~1659774402"
         }
       ]
     ],

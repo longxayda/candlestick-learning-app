@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { useRouter } from 'expo-router';
 import { View, Text, TouchableOpacity, Linking, ScrollView, StyleSheet } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { useTranslation } from 'react-i18next';
 const PRIVACY_POLICY_URL = 'https://www.freeprivacypolicy.com/live/ffbcb318-8259-46dd-a97a-88521e93cf3d';
-const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.example.app'; // Replace with your app's Play Store URL
-const FACEBOOK_URL = 'https://facebook.com/yourpage'; // Replace with your Facebook page URL
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.justivalaw.tradingessence'; // Replace with your app's Play Store URL
+const FACEBOOK_URL = 'https://facebook.com/'; // Replace with your Facebook page URL
 
 const SettingsScreen = () => {
     const { t, i18n } = useTranslation()

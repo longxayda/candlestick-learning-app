@@ -1,11 +1,13 @@
-import { ScrollView, View, StyleSheet, ImageBackground, Text, Image } from 'react-native';
+import {useRef} from 'react';
+import { ScrollView, View, StyleSheet, ImageBackground, Text, Image, Platform } from 'react-native';
 import QuizElement from '@/components/QuizElement';
 import { useRouter } from 'expo-router';
 import { quizzes } from '@/data/quizzes';
 import { quizzesEn } from '@/data/quizzes-en';
 import AnimatedCard from '@/components/AnimatedCard';
 import { useTranslation } from 'react-i18next';
-import ChangeLanguageButton from '@/components/ChangeLanguageButton';
+import { BannerAd, BannerAdSize, TestIds, useForeground } from 'react-native-google-mobile-ads';
+const adUnitId = __DEV__ ? TestIds.ADAPTIVE_BANNER : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
 
 const colors = ["rgba(255, 180, 180, 0.5)", "rgba(180, 255, 228, 0.5)", "rgba(30, 144, 255, 0.5)", 'rgba(255, 99, 72, 0.5)', "rgba(255, 238, 180, 0.5)"]
 const iconsMap = {
@@ -19,6 +21,13 @@ const iconsMap = {
 export default function Index() {
   const router = useRouter();
   const { t, i18n } = useTranslation();
+
+  const bannerRef = useRef < BannerAd > null;
+  
+    useForeground(() => {
+      Platform.OS === 'ios' && bannerRef.current?.load();
+    });
+
   const res = []
   Object.entries(i18n.language === 'vi' ? quizzes : quizzesEn).map(([sectionId, section], index) => {
     const icon = iconsMap[`icon${index + 1}`];
@@ -29,40 +38,44 @@ export default function Index() {
   })
 
   return (
-    <ImageBackground source={require("../../assets/images/background/Background.png")} style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.textContainer}>
-          <AnimatedCard index={1}>
-            <Text style={styles.headerTitle}>{t('quizScreen.title')}</Text>
-            <Text style={styles.subtitle}>{t('quizScreen.subtitle')}</Text>
-          </AnimatedCard>
+    <>
+      <ImageBackground source={require("../../assets/images/background/Background.png")} style={styles.container}>
+        <View style={styles.header}>
+          <View style={styles.textContainer}>
+            <AnimatedCard index={1}>
+              <Text style={styles.headerTitle}>{t('quizScreen.title')}</Text>
+              <Text style={styles.subtitle}>{t('quizScreen.subtitle')}</Text>
+            </AnimatedCard>
+          </View>
+          <View style={styles.imageContainer}>
+            <AnimatedCard index={1}>
+              <Image style={styles.headerImg} source={require("../../assets/images/sections/trangchu4.png")} />
+            </AnimatedCard>
+          </View>
         </View>
-        <View style={styles.imageContainer}>
-          <AnimatedCard index={1}>
-            <Image style={styles.headerImg} source={require("../../assets/images/sections/trangchu4.png")} />
-          </AnimatedCard>
+        <View style={styles.tabBar}>
         </View>
-      </View>
-      <View style={styles.tabBar}>
-      </View>
-      <ScrollView style={styles.container}>
-        {res.map((section, index) => (
-          <AnimatedCard key={section.id} index={index}>
-            <QuizElement
-              key={section.id}
-              title={section.title}
-              description={section.description}
-              icon={section.icon}
-              color={section.color}
-              onPress={() => {
-                console.log(`Navigating to ${section.id}`);
-                router.push(`/quizzes/${section.id}`);
-              }}
-            />
-          </AnimatedCard>
-        ))}
-      </ScrollView>
-    </ImageBackground>
+        <ScrollView style={styles.container}>
+          {res.map((section, index) => (
+            <AnimatedCard key={section.id} index={index}>
+              <QuizElement
+                key={section.id}
+                title={section.title}
+                description={section.description}
+                icon={section.icon}
+                color={section.color}
+                onPress={() => {
+                  console.log(`Navigating to ${section.id}`);
+                  router.push(`/quizzes/${section.id}`);
+                }}
+              />
+            </AnimatedCard>
+          ))}
+        </ScrollView>
+      </ImageBackground>
+      <BannerAd unitId={adUnitId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} />
+
+    </>
   );
 }
 

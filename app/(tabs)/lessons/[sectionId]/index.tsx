@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ScrollView, Text, StyleSheet, TouchableOpacity, Dimensions, Image, Pressable, ImageBackground } from "react-native";
+import { View, ScrollView, Text, StyleSheet, TouchableOpacity, Dimensions, Pressable, ImageBackground } from "react-native";
 const { width } = Dimensions.get("window");
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
@@ -8,7 +8,6 @@ import { lessonsEn } from '@/data/lessons-en';
 import LessonElement from '@/components/LessonElement';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTranslation } from "react-i18next";
-import ChangeLanguageButton from "@/components/ChangeLanguageButton";
 
 export default function CategoryScreen() {
   const { t, i18n } = useTranslation();

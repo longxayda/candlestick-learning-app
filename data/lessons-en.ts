@@ -2,7 +2,7 @@ export const lessonsEn = {
     basics: {
         title: "Part 1: Basics of Japanese Candlesticks",
         description: "Learn the basics of Japanese candlestick patterns",
-        backgroundImg: require("../assets/images/background/section1.png"),
+        backgroundImg: require("../assets/images/background/section1.jpeg"),
         lessons: {
             intro: {
                 title: "Lesson 1: What is Japanese Candlestick?",
@@ -123,7 +123,7 @@ export const lessonsEn = {
     reversals: {
         title: "Part 2: Reversal candlestick patterns",
         description: "Recognizing candlestick patterns that signal a possible trend reversal",
-        backgroundImg: require("../assets/images/background/section2.png"),
+        backgroundImg: require("../assets/images/background/section2.jpeg"),
         lessons: {
             hammer: {
                 title: "Lesson 5: Hammer Candlestick & Inverted Hammer Candlestick",
@@ -254,7 +254,7 @@ export const lessonsEn = {
     continuation: {
         title: "Part 3: Continuation Candlestick Patterns",
         description: "Recognizing candlestick patterns that signal the current trendlikely to continue",
-        backgroundImg: require("../assets/images/background/section3.png"),
+        backgroundImg: require("../assets/images/background/section3.jpeg"),
         lessons: {
             "rising-three-methods": {
                 title: "Lesson 9: Three Consecutive Rising Candles & Three Consecutive Falling Candles",
@@ -362,7 +362,7 @@ export const lessonsEn = {
     reversalChart: {
         title: "Part 4: Reversal Chart Patterns",
         description: "Recognizing chart patterns that signal a possible trend reversal",
-        backgroundImg: require("../assets/images/background/section4.png"),
+        backgroundImg: require("../assets/images/background/section4.jpeg"),
         lessons: {
             doubleTopBottom: {
                 title: "Lesson 12: Double Top & Double Bottom Pattern",
@@ -431,7 +431,7 @@ export const lessonsEn = {
                 previousLesson: "doubleTopBottom",
             },
             roundingTopBottom: {
-                title: "Lesson 14: Curved Top & Curved Bottom Patterns",
+                title: "Lesson 14: Curved Top & Rounding Bottom Patterns",
                 uri: require("../assets/images/sections/lesson14.png"),
                 content: [
                     {
@@ -498,10 +498,10 @@ export const lessonsEn = {
     continuationChart: {
         title: "Part 5: Continuation Chart Patterns",
         description: "Price patterns that signal the continuation of the current trend after a period of accumulation or correction",
-        backgroundImg: require("../assets/images/background/section5.png"),
+        backgroundImg: require("../assets/images/background/section5.jpeg"),
         lessons: {
             flag: {
-                title: "Lesson 16: Flags & Tail Flags nhe",
+                title: "Lesson 16: Flags & Pennants",
                 uri: require("../assets/images/sections/lesson16.png"),
                 content: [
                     {

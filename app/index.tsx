@@ -1,16 +1,25 @@
-import { View, Text, Image, StyleSheet, Animated, ImageBackground, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, Animated, ImageBackground, SafeAreaView } from 'react-native';
 import React, { useEffect, useRef } from 'react'
 import { useRouter } from 'expo-router';
 import { TouchableWithoutFeedback } from 'react-native';
 import '../i18n/i18n.config';
 import { useTranslation } from 'react-i18next';
-import ChangeLanguageButton from '@/components/ChangeLanguageButton';
+import mobileAds from 'react-native-google-mobile-ads';
+
 
 export default function WelcomeScreen() {
   const router = useRouter();
   const { t } = useTranslation()
   let runAnimation;
   const bounceAnim = useRef(new Animated.Value(1)).current;
+
+
+  mobileAds()
+    .initialize()
+    .then(adapterStatuses => {
+      // Initialization complete!
+    });
+
 
   useEffect(() => {
     runAnimation?.play();
@@ -34,21 +43,21 @@ export default function WelcomeScreen() {
 
   return (
     <ImageBackground source={require('../assets/images/background/Background.png')} style={styles.container}>
-      <Animated.View style={[{ transform: [{ scale: bounceAnim }] }]}>
-        <Image style={styles.image} source={require('../assets/images/welcome/2.png')} />
-      </Animated.View>
-      <View style={styles.textContainer}>
-        <Text style={styles.title}>{t('welcomeScreen.title')}</Text>
-        <Text style={styles.subtitle}>{t('welcomeScreen.subtitle')}</Text>
-        <TouchableWithoutFeedback
-          style={styles.button}
-          onPress={() => router.replace('/(tabs)/home')} // replace để không quay lại được welcome
-        >
-          <Animated.View style={[styles.button, { transform: [{ scale: bounceAnim }] }]}>
-            <Text style={styles.buttonText}>{t('welcomeScreen.start')}</Text>
-          </Animated.View>
-        </TouchableWithoutFeedback>
-      </View>
+        <Animated.View style={[{ transform: [{ scale: bounceAnim }] }]}>
+          <Image style={styles.image} source={require('../assets/images/welcome/2.png')} />
+        </Animated.View>
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>{t('welcomeScreen.title')}</Text>
+          <Text style={styles.subtitle}>{t('welcomeScreen.subtitle')}</Text>
+          <TouchableWithoutFeedback
+            style={styles.button}
+            onPress={() => router.replace('/(tabs)/home')} // replace để không quay lại được welcome
+          >
+            <Animated.View style={[styles.button, { transform: [{ scale: bounceAnim }] }]}>
+              <Text style={styles.buttonText}>{t('welcomeScreen.start')}</Text>
+            </Animated.View>
+          </TouchableWithoutFeedback>
+        </View>
     </ImageBackground>
   );
 }

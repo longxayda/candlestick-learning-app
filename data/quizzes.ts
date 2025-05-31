@@ -99,7 +99,7 @@ export const quizzes = {
           options: [
             "Bóng dưới dài",
             "Thân nến dài",
-            "Bóng trên dài, thân nhỏ, nằm gần đáy nến",
+            "Bóng trên dài, thân nhỏ, nằm gần đỉnh các nến trước đó",
             "Thân lớn và không có bóng"
           ]
         },

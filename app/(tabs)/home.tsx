@@ -1,11 +1,13 @@
-import React from "react";
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Dimensions, Image, ImageBackground } from "react-native";
+import React, {useState, useRef} from "react";
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Dimensions, Image, ImageBackground, Platform } from "react-native";
+import { BannerAd, BannerAdSize, TestIds, useForeground } from 'react-native-google-mobile-ads';
 import { useRouter } from 'expo-router';
 import { lessons } from '@/data/lessons';
 import { lessonsEn } from '@/data/lessons-en';
 import AnimatedCard from "@/components/AnimatedCard";
 import { useTranslation } from "react-i18next";
-import ChangeLanguageButton from "@/components/ChangeLanguageButton";
+
+const adUnitId = __DEV__ ? TestIds.ADAPTIVE_BANNER : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
 
 
 const { width } = Dimensions.get("window");
@@ -22,6 +24,12 @@ const iconsMap = {
 
 export default function CategoryScreen() {
   const { t, i18n } = useTranslation();
+
+  const bannerRef = useRef < BannerAd > null;
+
+  useForeground(() => {
+    Platform.OS === 'ios' && bannerRef.current?.load();
+  });
 
   const res = []
   Object.entries(i18n.language === 'vi' ? lessons : lessonsEn).map(([sectionId, section], index) => {
@@ -44,6 +52,7 @@ export default function CategoryScreen() {
   );
   const router = useRouter();
   return (
+    <>
     <ImageBackground source={require("../../assets/images/background/Background.png")} style={styles.container}>
       <View style={styles.header}>
         <View style={styles.textContainer}>
@@ -68,6 +77,8 @@ export default function CategoryScreen() {
         style={styles.flatList}
       />
     </ImageBackground>
+    <BannerAd unitId={adUnitId} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} />
+    </>
   );
 }
 
@@ -142,6 +153,7 @@ const styles = StyleSheet.create({
   },
   card: {
     width: (width - 48) / 2,
+    height: 240,
     borderRadius: 20,
     padding: 16,
     marginBottom: 20,
@@ -149,7 +161,7 @@ const styles = StyleSheet.create({
     borderColor: "#F8F7FF",
   },
   icon: {
-    width: '100%',
+    width: 100,
     height: 100,
     alignSelf: "center",
     resizeMode: 'contain',

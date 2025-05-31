@@ -6,7 +6,6 @@ import { Stack } from 'expo-router';
 import { quizzes } from '@/data/quizzes';
 import { useTranslation } from 'react-i18next';
 import { quizzesEn } from '@/data/quizzes-en';
-import ChangeLanguageButton from "@/components/ChangeLanguageButton";
 
 export default function QuizListScreen() {
   const {t, i18n} = useTranslation();

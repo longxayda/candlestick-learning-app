@@ -3,14 +3,14 @@ import { View, Text, ScrollView, Image, Pressable, Button, StyleSheet } from 're
 import { lessons } from '@/data/lessons';
 import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
-import ChangeLanguageButton from '@/components/ChangeLanguageButton';
 import { lessonsEn } from '@/data/lessons-en';
 
-
 export default function LessonDetailScreen() {
-  const { sectionId, lessonId } = useLocalSearchParams();
+
   const router = useRouter();
-  const {t, i18n} = useTranslation();
+
+  const { t, i18n } = useTranslation();
+  const { sectionId, lessonId } = useLocalSearchParams();
   const section = i18n.language === 'vi' ? lessons[sectionId] : lessonsEn[sectionId];
   const lesson = section?.lessons?.[lessonId];
   const nextSection = section.nextSection;
@@ -18,7 +18,6 @@ export default function LessonDetailScreen() {
   if (!lesson) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ChangeLanguageButton />
         <Text>{t('lessonDetailScreen.notFound')}</Text>
         <Pressable
           style={{
@@ -38,99 +37,101 @@ export default function LessonDetailScreen() {
   }
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={{ padding: 16 }}>
-      <Stack.Screen
-        options={{
-          title: lesson.title,
-        }}
-      />
-      {/* Breadcrumb / Back / Home */}
-      <Pressable
-        onPress={() => router.push(`/lessons/${sectionId}`)}
-        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}
-      >
-        <Ionicons name="arrow-back" size={20} color="#4B5563" />
-        <Text style={{ marginLeft: 6, fontSize: 16, color: '#4B5563' }}>{t('lessonDetailScreen.back')}</Text>
-      </Pressable>
-
-      <Text style={{ fontSize: 22, fontWeight: 'bold', marginBottom: 16 }}>
-        {lesson.title}
-      </Text>
-
-      {lesson.content.map((item, index) => {
-        if (item.type === 'text') {
-          return (
-            <Text key={index} style={{ fontSize: 16, marginBottom: 12, lineHeight: 22 }}>
-              {item.value}
-            </Text>
-          );
-        }
-
-        if (item.type === 'image') {
-          return (
-            <Image
-              key={index}
-              source={{ uri: item.src }}
-              alt={item.alt}
-              style={{
-                width: '100%',
-                height: 200,
-                resizeMode: 'contain',
-                marginBottom: 16,
-                borderRadius: 8,
-              }}
-            />
-          );
-        }
-        return null;
-      })}
-
-      {(lesson.previousLesson || lesson.nextLesson) && (
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', gap: 12, marginTop: 24 }}>
-          {lesson.previousLesson && (
-            <Pressable
-              onPress={() => {
-                console.log("Navigate to", lesson.previousLesson)
-                router.push(`/lessons/${sectionId}/${lesson.previousLesson}`)
-              }}
-              style={styles.buttonPrev}
-            >
-              <Text style={{ color: '#111', fontSize: 16, textAlign: 'center' }}>
-                {t('lessonDetailScreen.prev')}
-              </Text>
-            </Pressable>
-          )}
-          {lesson.nextLesson && (
-            <Pressable
-              onPress={() => router.push(`/lessons/${sectionId}/${lesson.nextLesson}`)}
-              style={styles.buttonNext}
-            >
-              <Text style={{ color: '#111', fontSize: 16, textAlign: 'center' }}>
-                {t('lessonDetailScreen.next')}
-              </Text>
-            </Pressable>
-          )}
-        </View>
-      )}
-
-
-      {!lesson.nextLesson && nextSection && (
-        <Pressable
-          onPress={() => {
-            console.log(`Navigating to ${nextSection}`);
-            router.push(`/lessons/${nextSection}`)
+    <>
+      <ScrollView style={styles.container} contentContainerStyle={{ padding: 16 }}>
+        <Stack.Screen
+          options={{
+            title: lesson.title,
           }}
-          style={styles.buttonNextSection}
+        />
+        {/* Breadcrumb / Back / Home */}
+        <Pressable
+          onPress={() => router.push(`/lessons/${sectionId}`)}
+          style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}
         >
-          <Text style={{ color: '#fff', fontSize: 16, textAlign: 'center' }}>
-            {t('lessonDetailScreen.nextSection')}
-          </Text>
+          <Ionicons name="arrow-back" size={20} color="#4B5563" />
+          <Text style={{ marginLeft: 6, fontSize: 16, color: '#4B5563' }}>{t('lessonDetailScreen.back')}</Text>
         </Pressable>
-      )}
-    </ScrollView>
+
+        <Text style={{ fontSize: 22, fontWeight: 'bold', marginBottom: 16 }}>
+          {lesson.title}
+        </Text>
+
+        {lesson.content.map((item, index) => {
+          if (item.type === 'text') {
+            return (
+              <Text key={index} style={{ fontSize: 16, marginBottom: 12, lineHeight: 22 }}>
+                {item.value}
+              </Text>
+            );
+          }
+
+          if (item.type === 'image') {
+            return (
+              <Image
+                key={index}
+                source={{ uri: item.src }}
+                alt={item.alt}
+                style={{
+                  width: '100%',
+                  height: 200,
+                  resizeMode: 'contain',
+                  marginBottom: 16,
+                  borderRadius: 8,
+                }}
+              />
+            );
+          }
+          return null;
+        })}
+
+
+        {(lesson.previousLesson || lesson.nextLesson) && (
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', gap: 12, marginTop: 24 }}>
+            {lesson.previousLesson && (
+              <Pressable
+                onPress={() => {
+                  console.log("Navigate to", lesson.previousLesson)
+                  router.push(`/lessons/${sectionId}/${lesson.previousLesson}`)
+                }}
+                style={styles.buttonPrev}
+              >
+                <Text style={{ color: '#111', fontSize: 16, textAlign: 'center' }}>
+                  {t('lessonDetailScreen.prev')}
+                </Text>
+              </Pressable>
+            )}
+            {lesson.nextLesson && (
+              <Pressable
+                onPress={() => router.push(`/lessons/${sectionId}/${lesson.nextLesson}`)}
+                style={styles.buttonNext}
+              >
+                <Text style={{ color: '#111', fontSize: 16, textAlign: 'center' }}>
+                  {t('lessonDetailScreen.next')}
+                </Text>
+              </Pressable>
+            )}
+          </View>
+        )}
+
+
+        {!lesson.nextLesson && nextSection && (
+          <Pressable
+            onPress={() => {
+              console.log(`Navigating to ${nextSection}`);
+              router.push(`/lessons/${nextSection}`)
+            }}
+            style={styles.buttonNextSection}
+          >
+            <Text style={{ color: '#fff', fontSize: 16, textAlign: 'center' }}>
+              {t('lessonDetailScreen.nextSection')}
+            </Text>
+          </Pressable>
+        )}
+      </ScrollView>
+    </>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {

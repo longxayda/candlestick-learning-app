@@ -99,7 +99,7 @@ export const quizzesEn = {
                     options: [
                         "Long lower shadow",
                         "Long candle body",
-                        "Long upper shadow, small body, located near the bottom of the candle",
+                        "Long upper shadow, small body, located near the top of the previous candle",
                         "Big body and no shadow"
                     ]
                 },
